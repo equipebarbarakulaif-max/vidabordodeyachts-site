@@ -174,6 +174,19 @@
   .cartao.destaque p { color: #cdd6e0; }
   .cartao.destaque .tag { background: rgba(186,162,140,.18); color: var(--areia); }
   .cartao.destaque .dados { color: var(--areia); }
+  .beneficios { list-style: none; padding: 0; margin: 2px 0 0; display: grid; gap: 8px; }
+  .beneficios li { position: relative; padding-left: 26px; font-size: 15px; font-weight: 500; color: var(--navy); }
+  .beneficios li::before { content: "✓"; position: absolute; left: 0; top: 0; width: 18px; height: 18px; border-radius: 50%; background: var(--gelo); color: var(--azul); font-size: 11px; font-weight: 700; display: grid; place-items: center; }
+  .cartao.destaque .beneficios li { color: var(--branco); }
+  .cartao.destaque .beneficios li::before { background: rgba(186,162,140,.22); color: var(--areia); }
+  .cartao .preco { margin-top: auto; }
+  .nos-dois { margin-top: 26px; text-align: center; color: var(--texto-suave); font-size: 15px; max-width: 760px; margin-inline: auto; }
+  .nos-dois b { color: var(--navy); }
+  .qual { margin-top: 44px; background: var(--branco); border-radius: 20px; padding: 34px; }
+  .qual h3 { font-size: 24px; text-align: center; }
+  .qual-grade { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 22px; }
+  .qual-tag { display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--azul); }
+  .qual ul { margin: 12px 0 0; padding-left: 18px; display: grid; gap: 10px; color: var(--texto-suave); font-size: 15px; }
 
   /* Conteúdo */
   .conteudo .grade { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
@@ -263,7 +276,8 @@
 
   @media (max-width: 900px) {
     .secao { padding-block: 64px; }
-    .sobre .grade, .conteudo .grade, .cartoes { grid-template-columns: 1fr; gap: 36px; }
+    .sobre .grade, .conteudo .grade, .cartoes, .qual-grade { grid-template-columns: 1fr; gap: 36px; }
+    .qual { padding: 26px 22px; }
     .conteudo figure { position: static; order: -1; }
     .conteudo figure img { aspect-ratio: 1 / 1; }
     .rotina { grid-template-columns: repeat(2, 1fr); }
@@ -355,20 +369,52 @@
       <div class="cartoes">
         <article class="cartao destaque">
           <span class="tag">Individual</span>
-          <h3>Mentoria individual</h3>
+          <h3>Mentoria individual: o seu plano, feito sob medida</h3>
           <div class="dados"><span>1h30</span><span>Só você e a Bárbara</span><span>Você escolhe o dia e o horário</span></div>
-          <p>Uma sessão exclusiva, somente com o mentorado e a Bárbara, em um dia e horário que funcionem melhor.</p>
-          <p>Além de tirar todas as dúvidas, nesse formato é possível analisar o perfil, as experiências e os objetivos de cada pessoa e criar uma estratégia mais personalizada para o processo de entrada nos Yachts.</p>
-          <div class="preco"><div class="valor">R$ 1.000<small>no Pix</small></div><div class="parc">ou <b>R$ 1.000 em até 12x</b> no cartão (+ taxas)</div></div>
+          <p>A gente mergulha na sua história: suas experiências, seus objetivos e o seu momento. A partir disso, monta com você uma <b>estratégia personalizada</b>: por onde começar, qual posição faz mais sentido, como apresentar a sua experiência e quais são os próximos passos até o embarque.</p>
+          <ul class="beneficios">
+            <li>Análise do seu perfil e das suas experiências</li>
+            <li>Estratégia individual, do primeiro passo à primeira vaga</li>
+            <li><b>Plano de Ação Personalizado</b> em PDF, feito só para você</li>
+            <li>Material de Apoio completo</li>
+          </ul>
+          <div class="preco"><div class="valor">R$ 1.300<small>no Pix</small></div><div class="parc">ou <b>R$ 1.300 em até 12x</b> no cartão (+ taxas)</div></div>
         </article>
         <article class="cartao">
           <span class="tag">Em grupo</span>
-          <h3>Mentoria em grupo</h3>
+          <h3>Mentoria em grupo: aprenda com quem está no mesmo caminho</h3>
           <div class="dados"><span>1h30</span><span>Até 5 pessoas</span><span>Turmas com datas definidas</span></div>
-          <p>Encontro com até 5 pessoas, com bastante espaço para perguntas e troca de experiências entre os participantes.</p>
-          <p>É uma ótima oportunidade para aprender também com as dúvidas e os processos de outras pessoas que estão entrando no mercado. As turmas acontecem em datas e horários específicos e estão sujeitas à disponibilidade de vagas.</p>
+          <p>Já entende um pouco da indústria, talvez até já tenha seus certificados, mas a vaga ainda não veio? Ou está começando do zero? No grupo, você recebe o <b>mapa completo da indústria dos Yachts</b> e aprende também com as dúvidas e os processos de outras pessoas que estão entrando no mercado. Muitas vezes, a pergunta de alguém é exatamente a que você ainda nem sabia que tinha.</p>
+          <ul class="beneficios">
+            <li>Todo o caminho para entrar nos Yachts, explicado do zero</li>
+            <li>Troca real com outras pessoas no mesmo momento</li>
+            <li>Material de Apoio completo: checklist, descontos, modelos e exemplos de currículo</li>
+          </ul>
           <div class="preco"><div class="valor">R$ 800<small>no Pix</small></div><div class="parc">ou <b>R$ 800 em até 12x</b> no cartão (+ taxas)</div></div>
         </article>
+      </div>
+      <p class="nos-dois"><b>Nos dois formatos:</b> 6 meses no grupo exclusivo de mentorados, plantão de dúvidas toda segunda-feira, 2 encontros por mês pelo Google Meet e descontos com os parceiros da mentoria.</p>
+
+      <div class="qual">
+        <h3>Qual é o formato ideal pra você?</h3>
+        <div class="qual-grade">
+          <div>
+            <span class="qual-tag">A individual é pra você se…</span>
+            <ul>
+              <li>você tem uma situação específica: está mudando de área, tem uma idade fora do padrão, o inglês ainda está em construção, ou tem experiências que não sabe como encaixar;</li>
+              <li>você já aplicou várias vezes e não sabe o que está dando errado no seu caso;</li>
+              <li>você quer um plano feito sob medida, do primeiro passo até a primeira vaga.</li>
+            </ul>
+          </div>
+          <div>
+            <span class="qual-tag">O grupo é pra você se…</span>
+            <ul>
+              <li>você está começando agora e quer entender todo o caminho para entrar nos Yachts;</li>
+              <li>você já entende um pouco da indústria, talvez até já tenha seus certificados, mas ainda não conseguiu a sua vaga e quer acertar o processo: onde aplicar, como se apresentar e o que os recrutadores esperam;</li>
+              <li>você gosta de aprender com a troca e com a experiência de outras pessoas no mesmo momento.</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -403,7 +449,7 @@
         <div><span class="quando">Toda segunda</span><h3>Grupo aberto para dúvidas</h3><p>Toda segunda-feira o grupo fica aberto para dúvidas e trocas de informações.</p></div>
         <div><span class="quando">2x por mês</span><h3>Encontros pelo Google Meet</h3><p>Para tirar dúvidas, conversar sobre os processos e compartilhar experiências entre os mentorados.</p></div>
         <div><span class="quando">Em cada etapa</span><h3>Entrevistas e propostas</h3><p>Os mentorados compartilham suas atualizações no grupo e recebem orientação sobre cada etapa do processo.</p></div>
-        <div><span class="quando">Ao final</span><h3>Material de Apoio em PDF</h3><p>Com checklist completo para usar como guia durante toda a jornada.</p></div>
+        <div><span class="quando">Ao final</span><h3>Material de Apoio em PDF</h3><p>Com checklist completo para usar como guia durante toda a jornada. Na individual, você recebe também o seu Plano de Ação Personalizado.</p></div>
       </div>
     </div>
   </section>
