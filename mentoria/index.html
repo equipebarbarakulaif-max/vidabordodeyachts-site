@@ -174,6 +174,21 @@
   .cartao.destaque p { color: #cdd6e0; }
   .cartao.destaque .tag { background: rgba(186,162,140,.18); color: var(--areia); }
   .cartao.destaque .dados { color: var(--areia); }
+  .treze { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; align-items: stretch; gap: 14px; margin-top: 30px; }
+  .t-item { background: var(--branco); border-radius: 16px; padding: 22px 22px 20px; display: flex; flex-direction: column; gap: 6px; box-shadow: 0 1px 0 rgba(0,36,69,.05), 0 14px 30px -22px rgba(0,36,69,.35); }
+  .t-num { font-size: 46px; font-weight: 800; line-height: 1; color: var(--azul); }
+  .t-item b { font-size: 17px; color: var(--navy); }
+  .t-item span:not(.t-num) { font-size: 14.5px; color: var(--texto-suave); line-height: 1.5; }
+  .t-total { background: var(--navy); }
+  .t-total .t-num { color: var(--areia); }
+  .t-total b { color: var(--branco); }
+  .t-total span:not(.t-num) { color: #cdd6e0; }
+  .t-grupo { margin-top: 14px; display: flex; gap: 16px; align-items: center; background: var(--branco); border-radius: 16px; padding: 18px 22px; border-left: 4px solid var(--wpp); box-shadow: 0 1px 0 rgba(0,36,69,.05), 0 14px 30px -22px rgba(0,36,69,.35); }
+  .t-grupo svg { flex: none; width: 34px; height: 34px; color: var(--wpp); }
+  .t-grupo b { color: var(--navy); }
+  .t-grupo p { margin: 0; font-size: 15.5px; color: var(--texto-suave); line-height: 1.55; }
+  .t-op { align-self: center; font-size: 34px; font-weight: 700; color: var(--areia); }
+  @media (max-width: 900px) { .treze { grid-template-columns: 1fr; } .t-op { justify-self: center; line-height: 1; } }
   .beneficios { list-style: none; padding: 0; margin: 2px 0 0; display: grid; gap: 8px; }
   .beneficios li { position: relative; padding-left: 26px; font-size: 15px; font-weight: 500; color: var(--navy); }
   .beneficios li::before { content: "✓"; position: absolute; left: 0; top: 0; width: 18px; height: 18px; border-radius: 50%; background: var(--gelo); color: var(--azul); font-size: 11px; font-weight: 700; display: grid; place-items: center; }
@@ -365,35 +380,45 @@
     <div class="wrap">
       <span class="sobrelinha">Formatos e investimento</span>
       <h2>Você pode escolher entre dois formatos</h2>
-      <p class="intro">Nos dois formatos, a sessão é online e dura 1h30.</p>
+      <p class="intro">Nos dois formatos, são <b>13 encontros ao vivo em 6 meses</b>, todos online. O que muda é a primeira sessão: na individual ela é só sua, e você sai com um Plano de Ação feito para você.</p>
+      <div class="treze" aria-label="13 encontros em 6 meses">
+        <div class="t-item"><span class="t-num">1</span><b>Sessão inicial de 1h30</b><span>Na individual, só você e a Bárbara. No grupo, até 5 pessoas.</span></div>
+        <span class="t-op" aria-hidden="true">+</span>
+        <div class="t-item"><span class="t-num">12</span><b>Encontros ao vivo</b><span>2 por mês, durante 6 meses, pelo Google Meet, com o grupo de mentorados.</span></div>
+        <span class="t-op" aria-hidden="true">=</span>
+        <div class="t-item t-total"><span class="t-num">13</span><b>encontros em 6 meses</b><span>Sessão inicial + 2 encontros por mês, durante os 6 meses.</span></div>
+      </div>
+      <div class="t-grupo"><svg aria-hidden="true"><use href="#i-wpp"/></svg><p><b>E você entra no grupo de WhatsApp dos mentorados</b>, junto com os outros alunos que estão no mesmo caminho. É ali que acontecem as trocas de experiência, o networking e as dicas do dia a dia, além do plantão de dúvidas toda segunda-feira.</p></div>
       <div class="cartoes">
         <article class="cartao destaque">
           <span class="tag">Individual</span>
           <h3>Mentoria individual: o seu plano, feito sob medida</h3>
-          <div class="dados"><span>1h30</span><span>Só você e a Bárbara</span><span>Você escolhe o dia e o horário</span></div>
+          <div class="dados"><span>13 encontros em 6 meses</span><span>1ª sessão de 1h30 só com a Bárbara</span><span>Você escolhe o dia e o horário</span></div>
           <p>A gente mergulha na sua história: suas experiências, seus objetivos e o seu momento. A partir disso, monta com você uma <b>estratégia personalizada</b>: por onde começar, qual posição faz mais sentido, como apresentar a sua experiência e quais são os próximos passos até o embarque.</p>
           <ul class="beneficios">
             <li>Análise do seu perfil e das suas experiências</li>
             <li>Estratégia individual, do primeiro passo à primeira vaga</li>
             <li><b>Plano de Ação Personalizado</b> em PDF, feito só para você</li>
             <li>Material de Apoio completo</li>
+            <li>Grupo no WhatsApp com os outros mentorados: troca de experiências e networking</li>
           </ul>
           <div class="preco"><div class="valor">R$ 1.150<small>no Pix</small></div><div class="parc">ou <b>R$ 1.150 em até 12x</b> no cartão (+ taxas)</div><div class="parc">ou <b>US$ 225 / € 200</b> pela Wise</div></div>
         </article>
         <article class="cartao">
           <span class="tag">Em grupo</span>
           <h3>Mentoria em grupo: aprenda com quem está no mesmo caminho</h3>
-          <div class="dados"><span>1h30</span><span>Até 5 pessoas</span><span>Turmas com datas definidas</span></div>
+          <div class="dados"><span>13 encontros em 6 meses</span><span>1ª sessão de 1h30 com até 5 pessoas</span><span>Turmas com datas definidas</span></div>
           <p>Já entende um pouco da indústria, talvez até já tenha seus certificados, mas a vaga ainda não veio? Ou está começando do zero? No grupo, você recebe o <b>mapa completo da indústria dos Yachts</b> e aprende também com as dúvidas e os processos de outras pessoas que estão entrando no mercado. Muitas vezes, a pergunta de alguém é exatamente a que você ainda nem sabia que tinha.</p>
           <ul class="beneficios">
             <li>Todo o caminho para entrar nos Yachts, explicado do zero</li>
             <li>Troca real com outras pessoas no mesmo momento</li>
             <li>Material de Apoio completo: checklist, descontos, modelos e exemplos de currículo</li>
+            <li>Grupo no WhatsApp com os outros mentorados: troca de experiências e networking</li>
           </ul>
           <div class="preco"><div class="valor">R$ 800<small>no Pix</small></div><div class="parc">ou <b>R$ 800 em até 12x</b> no cartão (+ taxas)</div><div class="parc">ou <b>US$ 160 / € 140</b> pela Wise</div></div>
         </article>
       </div>
-      <p class="nos-dois"><b>Nos dois formatos:</b> 6 meses no grupo exclusivo de mentorados, plantão de dúvidas toda segunda-feira, 2 encontros por mês pelo Google Meet e descontos com os parceiros da mentoria.</p>
+      <p class="nos-dois"><b>Nos dois formatos:</b> 6 meses no grupo de WhatsApp com os outros alunos, para trocar experiências e fazer networking, 12 encontros ao vivo pelo Google Meet (2 por mês), plantão de dúvidas toda segunda-feira e descontos com os parceiros da mentoria.</p>
 
       <div class="qual">
         <h3>Qual é o formato ideal pra você?</h3>
@@ -444,10 +469,10 @@
     <div class="wrap">
       <span class="sobrelinha">Depois da mentoria</span>
       <h2>O acompanhamento continua</h2>
-      <p class="intro">Ao entrar na mentoria, você passa a fazer parte do grupo exclusivo de mentorados Vida a Bordo de Yachts. Por <b>6 meses</b>, você tem orientação do primeiro passo ao processo seletivo. Depois, se quiser, pode renovar o acompanhamento.</p>
+      <p class="intro">Ao entrar na mentoria, você passa a fazer parte do <b>grupo exclusivo de mentorados no WhatsApp</b>, junto com os outros alunos: um espaço de troca de experiências e networking com quem está no mesmo caminho. Por <b>6 meses</b>, você tem orientação do primeiro passo ao processo seletivo. Depois, se quiser, pode renovar o acompanhamento.</p>
       <div class="rotina">
-        <div><span class="quando">Toda segunda</span><h3>Grupo aberto para dúvidas</h3><p>Toda segunda-feira o grupo fica aberto para dúvidas e trocas de informações.</p></div>
-        <div><span class="quando">2x por mês</span><h3>Encontros pelo Google Meet</h3><p>Para tirar dúvidas, conversar sobre os processos e compartilhar experiências entre os mentorados.</p></div>
+        <div><span class="quando">Desde o 1º dia</span><h3>Grupo no WhatsApp com os alunos</h3><p>Troca de experiências e networking com quem está no mesmo caminho, e plantão de dúvidas com a Bárbara toda segunda-feira.</p></div>
+        <div><span class="quando">2x por mês</span><h3>12 encontros pelo Google Meet</h3><p>Para tirar dúvidas, conversar sobre os processos e compartilhar experiências entre os mentorados.</p></div>
         <div><span class="quando">Em cada etapa</span><h3>Entrevistas e propostas</h3><p>Os mentorados compartilham suas atualizações no grupo e recebem orientação sobre cada etapa do processo.</p></div>
         <div><span class="quando">Ao final</span><h3>Material de Apoio em PDF</h3><p>Com checklist completo para usar como guia durante toda a jornada. Na individual, você recebe também o seu Plano de Ação Personalizado.</p></div>
       </div>
