@@ -139,6 +139,8 @@
   .materia { display: flex; flex-direction: column; gap: 6px; text-decoration: none; background: var(--branco); border: 1px solid var(--gelo); border-top: 4px solid var(--azul); border-radius: var(--raio); padding: 24px; transition: transform .15s ease, box-shadow .15s ease; }
   .materia:hover { transform: translateY(-3px); box-shadow: 0 18px 36px -24px rgba(0,36,69,.45); }
   .materia:focus-visible { outline: 3px solid var(--areia); outline-offset: 3px; }
+  .materia { padding-top: 0; overflow: hidden; }
+  .materia .print { display: block; max-width: none; width: calc(100% + 48px); margin: 0 -24px 14px; aspect-ratio: 4 / 3; height: auto; object-fit: cover; object-position: top center; border-bottom: 1px solid var(--gelo); }
   .materia .veiculo { font-size: 18px; font-weight: 700; color: var(--navy); }
   .materia .data { font-size: 12px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--areia); }
   .materia p { font-size: 15px; color: var(--texto); margin-top: 8px; flex: 1; }
@@ -434,18 +436,21 @@
       <h2>A trajetória da Bárbara em destaque</h2>
       <div class="materias">
         <a class="materia" href="https://revistamarieclaire.globo.com/carreira/noticia/2025/07/salario-de-r-55-mil-e-destinos-de-bilionarios-a-rotina-da-brasileira-que-trabalha-em-iates-de-luxo-internacionais.ghtml" target="_blank" rel="noopener">
+          <img class="print" src="img/midia-marieclaire.jpg" alt="Print da matéria da Marie Claire sobre Bárbara Kulaif" width="900" height="760" loading="lazy">
           <span class="veiculo">Marie Claire</span>
           <span class="data">Julho de 2025</span>
           <p>“Salário de R$ 55 mil e destinos de bilionários: a rotina da brasileira que trabalha em iates de luxo internacionais”</p>
           <span class="ler">Ler matéria →</span>
         </a>
         <a class="materia" href="https://www.uol.com.br/nossa/noticias/redacao/2025/06/13/brasileira-larga-cruzeiros-para-ser-faz-tudo-em-iates-de-luxo-pelo-mundo.htm" target="_blank" rel="noopener">
+          <img class="print" src="img/midia-uol.jpg" alt="Print da matéria do UOL Nossa sobre Bárbara Kulaif" width="900" height="760" loading="lazy">
           <span class="veiculo">UOL · Nossa</span>
           <span class="data">Junho de 2025</span>
           <p>“Brasileira larga cruzeiros para ser ‘faz tudo’ em iates de luxo pelo mundo”</p>
           <span class="ler">Ler matéria →</span>
         </a>
         <a class="materia" href="https://mulhereseacidade.substack.com/p/a-historia-de-quem-fez-do-mundo-sua" target="_blank" rel="noopener">
+          <img class="print" src="img/midia-mulheres.jpg" alt="Print da entrevista no Mulheres e a Cidade com Bárbara Kulaif" width="900" height="760" loading="lazy">
           <span class="veiculo">Mulheres e a Cidade</span>
           <span class="data">Entrevista</span>
           <p>“A história de quem fez do mundo sua casa”</p>
