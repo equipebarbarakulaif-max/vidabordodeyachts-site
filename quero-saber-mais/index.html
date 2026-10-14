@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Quero saber mais · Vida a Bordo de Yachts</title>
+<meta name="description" content="Quer trabalhar em Yachts de luxo ao redor do mundo? Deixe seu contato e a nossa equipe te chama para conversar.">
+<meta name="theme-color" content="#002445">
+<meta property="og:title" content="Quero trabalhar em Yachts · Vida a Bordo de Yachts">
+<meta property="og:description" content="Deixe seu contato e a nossa equipe te chama para conversar. Mesmo começando do zero.">
+<meta property="og:image" content="https://vidabordodeyachts.com.br/img/hero-yacht.jpg">
+<meta property="og:type" content="website">
+<link rel="icon" type="image/png" href="../img/simbolo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #002445;
+    --azul: #0082A0;
+    --areia: #BAA28C;
+    --areia-claro: #f3ede6;
+    --gelo: #E9EAEE;
+    --branco: #ffffff;
+    --texto: #1f2a37;
+    --texto-suave: #55606e;
+    --wpp: #1f9d55;
+    --erro: #b42318;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; min-height: 100vh;
+    font-family: Montserrat, "Helvetica Neue", Arial, sans-serif;
+    color: var(--texto); font-size: 16px; line-height: 1.6;
+    background: var(--navy);
+    -webkit-font-smoothing: antialiased;
+  }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; }
+
+  .fundo {
+    position: relative; isolation: isolate; color: var(--branco);
+    background: var(--navy) url("../img/hero-yacht.jpg") center / cover no-repeat;
+    padding: calc(28px + env(safe-area-inset-top, 0px)) 16px 120px;
+  }
+  .fundo::before {
+    content: ""; position: absolute; inset: 0; z-index: -1;
+    background: linear-gradient(180deg, rgba(0,36,69,.80) 0%, rgba(0,36,69,.88) 60%, var(--navy) 100%);
+  }
+  .fundo .logo { width: 150px; margin: 0 auto 36px; }
+  .chamada { max-width: 560px; margin: 0 auto; text-align: center; }
+  .sobrelinha { display: block; font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--areia); margin-bottom: 12px; }
+  h1 { margin: 0; font-size: clamp(30px, 6.5vw, 44px); line-height: 1.15; font-weight: 700; letter-spacing: -.5px; text-wrap: balance; }
+  h1 em { font-style: normal; color: var(--areia); }
+  h1::after { content: ""; display: block; width: 74px; height: 9px; margin: 18px auto 0; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 0 470 51'%3E%3Cpath d='M0,29 C15,23 30,15 44,15 C70,15 100,34 131,34 C160,34 185,20 206,4 C198,14 190,27 172,36 C158,43 142,47 128,47 C100,47 70,32 50,25 C38,21 20,24 0,29 Z' fill='%23BAA28C'/%3E%3Cpath transform='translate%28250,0%29' d='M0,29 C15,23 30,15 44,15 C70,15 100,34 131,34 C160,34 185,20 206,4 C198,14 190,27 172,36 C158,43 142,47 128,47 C100,47 70,32 50,25 C38,21 20,24 0,29 Z' fill='%23BAA28C'/%3E%3C/svg%3E") center / contain no-repeat; }
+  .chamada p { margin: 18px auto 0; color: #d9e0e8; font-size: 17px; max-width: 470px; }
+
+  .cartao {
+    position: relative; max-width: 560px; margin: -84px auto 0; background: var(--branco);
+    border-radius: 18px; padding: 30px 26px 28px; box-shadow: 0 24px 60px rgba(0,0,0,.28);
+  }
+  .cartao-wrap { padding: 0 16px 48px; }
+  .campo { margin-bottom: 18px; }
+  label, .rotulo { display: block; font-weight: 600; font-size: 14px; color: var(--navy); margin-bottom: 6px; }
+  .opcional { font-weight: 500; color: var(--texto-suave); }
+  input[type=text], input[type=email], input[type=tel] {
+    width: 100%; font: inherit; font-size: 16px; padding: 13px 14px; border: 1.5px solid #cfd4dc; border-radius: 10px;
+    background: #fbfbfc; color: var(--texto); transition: border-color .15s, box-shadow .15s;
+  }
+  input:focus { outline: none; border-color: var(--azul); box-shadow: 0 0 0 3px rgba(0,130,160,.15); background: #fff; }
+  .opcoes { display: flex; flex-wrap: wrap; gap: 8px; }
+  .opcoes label {
+    margin: 0; font-weight: 500; font-size: 14px; color: var(--texto); cursor: pointer;
+    border: 1.5px solid #cfd4dc; border-radius: 30px; padding: 9px 15px; background: #fbfbfc; transition: all .15s;
+  }
+  .opcoes input { position: absolute; opacity: 0; pointer-events: none; }
+  .opcoes input:checked + span { color: var(--branco); }
+  .opcoes label:has(input:checked) { background: var(--navy); border-color: var(--navy); color: var(--branco); }
+  .opcoes label:has(input:focus-visible) { box-shadow: 0 0 0 3px rgba(0,130,160,.3); }
+  .aceite { display: flex; gap: 10px; align-items: flex-start; font-size: 13px; color: var(--texto-suave); font-weight: 500; margin: 6px 0 20px; }
+  .aceite input { margin-top: 3px; width: 18px; height: 18px; accent-color: var(--navy); flex: none; }
+  .armadilha { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+  .btn {
+    display: flex; width: 100%; align-items: center; justify-content: center; gap: 10px;
+    padding: 16px 24px; border: 0; border-radius: 40px; cursor: pointer;
+    font: inherit; font-weight: 700; font-size: 16px; letter-spacing: .3px; text-decoration: none;
+    background: var(--navy); color: var(--branco); transition: transform .15s, background .15s;
+  }
+  .btn:hover { transform: translateY(-2px); background: #0a2f55; }
+  .btn:disabled { opacity: .6; cursor: wait; transform: none; }
+  .btn-wpp { background: var(--wpp); }
+  .btn-wpp:hover { background: #1a8a4a; }
+  .btn svg { width: 20px; height: 20px; flex: none; }
+  .msg-erro:empty { display: none; }
+  .msg-erro { color: var(--erro); font-size: 14px; font-weight: 600; margin-top: 12px; text-align: center; min-height: 1em; }
+
+  .sucesso { display: none; text-align: center; }
+  .sucesso .icone { font-size: 44px; line-height: 1; }
+  .sucesso h2 { color: var(--navy); font-size: 26px; margin: 12px 0 8px; }
+  .sucesso p { color: var(--texto-suave); margin: 0 0 22px; }
+  .enviado form { display: none; }
+  .enviado .sucesso { display: block; }
+
+  .confianca { max-width: 560px; margin: 26px auto 0; display: flex; gap: 14px; align-items: center; color: #c6d0db; font-size: 14px; }
+  .confianca img { width: 52px; height: 52px; border-radius: 50%; object-fit: cover; border: 2px solid var(--areia); flex: none; }
+  .confianca b { color: var(--branco); font-weight: 600; }
+  .rodape { text-align: center; color: #8fa0b3; font-size: 12px; padding: 0 16px 36px; }
+  .rodape a { color: #c6d0db; }
+
+  @media (min-width: 700px) {
+    .cartao { padding: 38px 40px 34px; }
+    .duas { display: grid; grid-template-columns: 1fr 1fr; gap: 0 16px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="fundo">
+  <a href="../"><img class="logo" src="../img/logo-claro.png" alt="Vida a Bordo de Yachts" width="150" height="69"></a>
+  <div class="chamada">
+    <span class="sobrelinha">Vida a Bordo de Yachts</span>
+    <h1>Quer trabalhar em <em>Yachts de luxo</em>?</h1>
+    <p>Deixe seu contato e a nossa equipe te chama no WhatsApp para entender o seu momento. Mesmo começando do zero.</p>
+  </div>
+</header>
+
+<main class="cartao-wrap">
+  <div class="cartao" id="cartao">
+    <form id="form" novalidate>
+      <div class="campo">
+        <label for="nome">Seu nome</label>
+        <input type="text" id="nome" name="nome" autocomplete="name" required>
+      </div>
+      <div class="duas">
+        <div class="campo">
+          <label for="whatsapp">WhatsApp (com DDD)</label>
+          <input type="tel" id="whatsapp" name="whatsapp" autocomplete="tel" inputmode="tel" placeholder="(11) 99999-9999" required>
+        </div>
+        <div class="campo">
+          <label for="email">E-mail</label>
+          <input type="email" id="email" name="email" autocomplete="email" required>
+        </div>
+      </div>
+      <div class="campo">
+        <label for="instagram">Instagram <span class="opcional">(opcional)</span></label>
+        <input type="text" id="instagram" name="instagram" placeholder="@seuperfil" autocapitalize="off">
+      </div>
+      <div class="campo">
+        <span class="rotulo" id="r-interesse">Qual área te interessa?</span>
+        <div class="opcoes" role="radiogroup" aria-labelledby="r-interesse">
+          <label><input type="radio" name="interesse" value="Interior (Stewardess/Steward)" required><span>Interior (Stew)</span></label>
+          <label><input type="radio" name="interesse" value="Deck (Deckhand)"><span>Deck</span></label>
+          <label><input type="radio" name="interesse" value="Deck/Stew"><span>Deck/Stew</span></label>
+          <label><input type="radio" name="interesse" value="Engenharia (Engineer)"><span>Engenharia</span></label>
+          <label><input type="radio" name="interesse" value="Capitão (Captain)"><span>Capitão</span></label>
+          <label><input type="radio" name="interesse" value="Cozinha (Chef)"><span>Cozinha</span></label>
+          <label><input type="radio" name="interesse" value="Ainda não sei"><span>Ainda não sei</span></label>
+        </div>
+      </div>
+      <div class="campo">
+        <span class="rotulo" id="r-momento">Em que momento você está?</span>
+        <div class="opcoes" role="radiogroup" aria-labelledby="r-momento">
+          <label><input type="radio" name="momento" value="Quero começar agora" required><span>Quero começar agora</span></label>
+          <label><input type="radio" name="momento" value="Nos próximos meses"><span>Nos próximos meses</span></label>
+          <label><input type="radio" name="momento" value="Só pesquisando"><span>Só pesquisando</span></label>
+        </div>
+      </div>
+      <div class="armadilha" aria-hidden="true">
+        <label for="site">Não preencha</label><input type="text" id="site" name="site" tabindex="-1" autocomplete="off">
+      </div>
+      <label class="aceite">
+        <input type="checkbox" id="aceite" required>
+        <span>Autorizo a equipe Vida a Bordo de Yachts a entrar em contato comigo pelo WhatsApp e por e-mail.</span>
+      </label>
+      <button class="btn" type="submit" id="enviar">Quero saber mais</button>
+      <p class="msg-erro" id="erro" role="alert"></p>
+    </form>
+
+    <div class="sucesso" aria-live="polite">
+      <div class="icone">⚓</div>
+      <h2>Recebemos o seu contato!</h2>
+      <p>Em breve a nossa equipe te chama no WhatsApp. Enquanto isso, entre na nossa comunidade gratuita: um grupo para quem quer trabalhar em Yachts trocar dicas e experiências.</p>
+      <a class="btn btn-wpp" href="https://chat.whatsapp.com/LErBYEvn9JuAww9mCSCZAa" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1s-.5-.1-.7.1-.8 1-1 1.2-.4.2-.7.1a8.2 8.2 0 0 1-4-3.5c-.3-.5.3-.5.9-1.6.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6a1.1 1.1 0 0 0-.8.4 3.4 3.4 0 0 0-1 2.5 5.9 5.9 0 0 0 1.2 3.1 13.4 13.4 0 0 0 5.2 4.6c1.9.8 2.7.9 3.6.7a3.1 3.1 0 0 0 2-1.4 2.5 2.5 0 0 0 .2-1.4c-.1-.1-.3-.2-.7-.4zM12 21.8a9.8 9.8 0 0 1-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4A9.8 9.8 0 1 1 12 21.8zm8.4-18.2A11.8 11.8 0 0 0 1.8 17.8L.1 24l6.3-1.7A11.8 11.8 0 0 0 12 23.7 11.8 11.8 0 0 0 20.4 3.6z"/></svg>
+        Entrar na comunidade
+      </a>
+    </div>
+  </div>
+
+  <div class="confianca">
+    <img src="../img/barbara-selo.jpg" alt="" width="52" height="52">
+    <span><b>Bárbara Kulaif</b> · 9 anos a bordo · Below Deck S12. Do zero ao embarque com a Mentoria Vida a Bordo de Yachts.</span>
+  </div>
+</main>
+
+<footer class="rodape">
+  <a href="../">vidabordodeyachts.com.br</a> · @vidabordodeyachts
+</footer>
+
+<script>
+  // Endereço do Apps Script (Implantar > App da Web). Recebe o formulário e cria o card no Notion.
+  const ENDPOINT = 'https://script.google.com/macros/s/AKfycbzKKHorDmVlxB1MglaIDmLFtnRLLgjfSjtbGDet_Quy1dC0dzTIvN_JT8EvBx3QxINKlg/exec';
+  const WHATSAPP = '5511991245884';
+
+  const form = document.getElementById('form');
+  const erro = document.getElementById('erro');
+  const botao = document.getElementById('enviar');
+  const params = new URLSearchParams(location.search);
+  const origem = params.get('origem') || params.get('utm_source') || 'Site';
+
+  form.addEventListener('submit', async (ev) => {
+    ev.preventDefault();
+    erro.textContent = '';
+    const d = Object.fromEntries(new FormData(form));
+    if (!d.nome || !d.whatsapp || !d.email || !d.interesse || !d.momento) { erro.textContent = 'Preencha todos os campos, por favor.'; return; }
+    if (!/^\S+@\S+\.\S+$/.test(d.email)) { erro.textContent = 'Confira o seu e-mail.'; return; }
+    if (d.whatsapp.replace(/\D/g, '').length < 10) { erro.textContent = 'Confira o seu WhatsApp, com DDD.'; return; }
+    if (!document.getElementById('aceite').checked) { erro.textContent = 'Marque a autorização de contato para continuar.'; return; }
+    if (d.site) return;   // robô
+
+    botao.disabled = true;
+    botao.textContent = 'Enviando...';
+    try {
+      if (!ENDPOINT) throw new Error('sem endereço');
+      await fetch(ENDPOINT, {
+        method: 'POST', mode: 'no-cors',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify({ ...d, origem, pagina: location.href })
+      });
+      document.getElementById('cartao').classList.add('enviado');
+    } catch (e) {
+      const texto = 'Olá! Quero saber mais sobre trabalhar em Yachts. Meu nome é ' + d.nome + '.';
+      erro.innerHTML = 'Não conseguimos enviar agora. <a href="https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(texto) + '">Fale com a gente no WhatsApp</a>.';
+      botao.disabled = false;
+      botao.textContent = 'Quero saber mais';
+    }
+  });
+</script>
+</body>
+</html>
