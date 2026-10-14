@@ -100,7 +100,7 @@
 
   /* Ondas do logo embaixo dos títulos */
   h2::after, .hero h1::after { content: ""; display: block; width: 74px; height: 9px; margin-top: 18px; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 0 470 51'%3E%3Cpath d='M0,29 C15,23 30,15 44,15 C70,15 100,34 131,34 C160,34 185,20 206,4 C198,14 190,27 172,36 C158,43 142,47 128,47 C100,47 70,32 50,25 C38,21 20,24 0,29 Z' fill='%230082A0'/%3E%3Cpath transform='translate%28250,0%29' d='M0,29 C15,23 30,15 44,15 C70,15 100,34 131,34 C160,34 185,20 206,4 C198,14 190,27 172,36 C158,43 142,47 128,47 C100,47 70,32 50,25 C38,21 20,24 0,29 Z' fill='%230082A0'/%3E%3C/svg%3E") left center / contain no-repeat; }
-  .hero h1::after, .acomp h2::after { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 0 470 51'%3E%3Cpath d='M0,29 C15,23 30,15 44,15 C70,15 100,34 131,34 C160,34 185,20 206,4 C198,14 190,27 172,36 C158,43 142,47 128,47 C100,47 70,32 50,25 C38,21 20,24 0,29 Z' fill='%23BAA28C'/%3E%3Cpath transform='translate%28250,0%29' d='M0,29 C15,23 30,15 44,15 C70,15 100,34 131,34 C160,34 185,20 206,4 C198,14 190,27 172,36 C158,43 142,47 128,47 C100,47 70,32 50,25 C38,21 20,24 0,29 Z' fill='%23BAA28C'/%3E%3C/svg%3E"); }
+  .hero h1::after, .acomp h2::after, .isca h2::after { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 0 470 51'%3E%3Cpath d='M0,29 C15,23 30,15 44,15 C70,15 100,34 131,34 C160,34 185,20 206,4 C198,14 190,27 172,36 C158,43 142,47 128,47 C100,47 70,32 50,25 C38,21 20,24 0,29 Z' fill='%23BAA28C'/%3E%3Cpath transform='translate%28250,0%29' d='M0,29 C15,23 30,15 44,15 C70,15 100,34 131,34 C160,34 185,20 206,4 C198,14 190,27 172,36 C158,43 142,47 128,47 C100,47 70,32 50,25 C38,21 20,24 0,29 Z' fill='%23BAA28C'/%3E%3C/svg%3E"); }
   .final h2::after { margin-inline: auto; background-position: center; }
 
   /* Quem é */
@@ -222,6 +222,19 @@
   .amigos p { margin: 0; color: rgba(255,255,255,.82); font-size: 15.5px; line-height: 1.6; }
   .amigos p b { color: #fff; }
   .amigos .btn { white-space: nowrap; }
+  /* Material gratuito: Modelo de CV */
+  .hero .material { display: inline-flex; align-items: center; gap: 8px; margin-top: 18px; font-size: 14px; font-weight: 600; color: var(--areia); text-decoration: none; border-bottom: 1px solid rgba(186,162,140,.5); padding-bottom: 2px; }
+  .hero .material:hover { color: #fff; border-color: #fff; }
+  .isca { background: var(--navy); color: #fff; padding-block: 64px; overflow: hidden; }
+  .isca .wrap { display: grid; grid-template-columns: 220px 1fr auto; gap: 48px; align-items: center; }
+  .isca img { width: 100%; border-radius: 8px; box-shadow: 0 22px 50px rgba(0,0,0,.45); transform: rotate(-4deg); }
+  .isca .sobrelinha { color: var(--areia); }
+  .isca h2 { color: #fff; }
+  .isca h2 em { font-style: normal; color: var(--areia); }
+  .isca p { color: #d9e0e8; margin-top: 14px; max-width: 520px; }
+  .btn-areia { background: var(--areia); color: var(--navy); white-space: nowrap; }
+  .btn-areia:hover { background: #fff; }
+  @media (max-width: 860px) { .isca .wrap { grid-template-columns: 1fr; gap: 28px; text-align: center; } .isca img { width: 160px; margin: 0 auto; } .isca h2::after { margin-inline: auto; background-position: center; } .isca p { margin-inline: auto; } .isca .btn { justify-content: center; } }
   @media (max-width: 860px) { .amigos { grid-template-columns: 1fr; gap: 16px; padding: 26px 22px; } .amigos .am-num { justify-self: start; } .amigos .btn { white-space: normal; justify-content: center; } }
   .qual { margin-top: 44px; background: var(--branco); border-radius: 20px; padding: 34px; }
   .qual h3 { font-size: 24px; text-align: center; }
@@ -393,6 +406,7 @@
           <a class="btn btn-wpp js-wpp" href="#"><svg><use href="#i-wpp"/></svg>Quero participar da mentoria</a>
           <a class="btn btn-linha" href="#formatos">Como funciona</a>
         </div>
+        <a class="material" href="quero-saber-mais/?origem=site">📄 Baixe grátis o Modelo de CV para Yachts →</a>
         <div class="selo">
           <img src="img/barbara-selo.jpg" alt="" width="52" height="52">
           <span><b>Bárbara Kulaif</b><br>Chief Stewardess · 4 anos em Yachts de Luxo</span>
@@ -498,6 +512,19 @@
         <article><span class="num">05</span><div><h3>Não tem experiência no setor náutico</h3><p>Está começando do zero, mas tem vontade de aprender.</p></div></article>
         <article><span class="num">06</span><div><h3>Já trabalhou em cruzeiros</h3><p>E quer fazer a transição para a indústria dos Yachts.</p></div></article>
       </div>
+    </div>
+  </section>
+
+  <!-- MATERIAL GRATUITO -->
+  <section class="isca" id="modelo-cv">
+    <div class="wrap">
+      <img src="img/capa-modelo-cv.jpg" alt="Capa do guia Modelo de CV para Yachts" width="909" height="1287" loading="lazy">
+      <div>
+        <span class="sobrelinha">Material gratuito</span>
+        <h2>Modelo de CV para <em>Yachts</em></h2>
+        <p>O CV de Yacht tem regras próprias. Baixe grátis o guia com onde vai cada informação, os erros que fazem um CV ser descartado e o modelo para preencher.</p>
+      </div>
+      <a class="btn btn-areia" href="quero-saber-mais/?origem=site">Quero o modelo grátis</a>
     </div>
   </section>
 
