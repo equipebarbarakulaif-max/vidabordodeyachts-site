@@ -210,6 +210,20 @@
   .cartao.destaque .comp-lista li b { color: var(--branco); }
   .cartao.destaque .comp-lista li.forte b { color: var(--areia); }
   .comp .preco { margin-top: 20px; }
+  .comp .preco .valor small { display: block; margin: 6px 0 0; }
+  /* Faixa de números */
+  .numeros { background: var(--navy); color: #fff; padding-block: 26px; border-top: 1px solid rgba(255,255,255,.08); }
+  .numeros ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; text-align: center; }
+  .numeros b { display: block; font-size: 30px; font-weight: 700; color: var(--areia); line-height: 1.1; }
+  .numeros span { font-size: 13px; letter-spacing: .5px; color: #c6d0db; }
+  @media (max-width: 700px) { .numeros ul { grid-template-columns: repeat(2, 1fr); gap: 22px 10px; } .numeros b { font-size: 26px; } }
+  .preco .garantia { margin-top: 8px; font-size: 13px; font-weight: 600; color: var(--azul); }
+  .cartao.destaque .preco .garantia { color: var(--areia); }
+  .preco .parc-topo { font-size: 13px; font-weight: 600; color: var(--texto-suave); text-transform: uppercase; letter-spacing: 1.5px; }
+  .preco .pix { margin-top: 12px; display: inline-block; background: var(--areia-claro); color: var(--navy); border-left: 3px solid var(--areia); border-radius: 0 8px 8px 0; padding: 7px 12px; font-size: 15px; }
+  .cartao.destaque .preco .pix { background: rgba(186,162,140,.16); color: #fff; }
+  .cartao.destaque .preco .pix b { color: var(--areia); }
+  .preco .total { margin-top: 10px; font-size: 13px; color: var(--texto-suave); }
   .comp .btn { margin-top: 20px; justify-content: center; }
   @media (max-width: 860px) { .comp { grid-template-columns: 1fr; } }
   .nos-dois { margin-top: 26px; text-align: center; color: var(--texto-suave); font-size: 15px; max-width: 760px; margin-inline: auto; }
@@ -355,7 +369,7 @@
   .preco .valor { font-size: 40px; font-weight: 700; color: var(--navy); line-height: 1.1; }
   .preco .valor small { font-size: 16px; font-weight: 600; color: var(--texto-suave); margin-left: 6px; }
   .cartao.destaque .preco .valor { color: var(--branco); }
-  .cartao.destaque .preco .valor small, .cartao.destaque .preco .parc { color: #cdd6e0; }
+  .cartao.destaque .preco .valor small, .cartao.destaque .preco .parc, .cartao.destaque .preco .total, .cartao.destaque .preco .parc-topo { color: #cdd6e0; }
   .preco .parc { font-size: 15px; color: var(--texto-suave); margin-top: 6px; }
   .preco .parc b { color: var(--azul); }
   .cartao.destaque .preco .parc b { color: var(--areia); }
@@ -395,11 +409,24 @@
         <div class="acoes"><a class="btn btn-linha" href="#formatos">Ver formatos e valores</a></div>
         <div class="selo">
           <img src="../img/barbara-selo.jpg" alt="" width="52" height="52">
-          <span><b>Bárbara Kulaif</b><br>Chief Stewardess · 9 anos a bordo · Below Deck S12</span>
+          <span><b>Bárbara Kulaif</b><br>Chief Stewardess · 9+ anos a bordo · Below Deck S12</span>
         </div>
       </div>
     </div>
   </section>
+
+  <!-- NÚMEROS -->
+  <section class="numeros" aria-label="Resultados">
+    <div class="wrap">
+      <ul>
+        <li><b>50+</b><span>alunos</span></li>
+        <li><b>14</b><span>alunos embarcados</span></li>
+        <li><b>9+ anos</b><span>a bordo</span></li>
+        <li><b>Below Deck</b><span>temporada 12</span></li>
+      </ul>
+    </div>
+  </section>
+
 
   <section class="formatos secao" id="formatos">
     <div class="wrap">
@@ -419,7 +446,7 @@
             <li><span>Grupo de WhatsApp dos alunos</span><b>✓</b></li>
             <li><span>Material de Apoio e descontos</span><b>✓</b></li>
           </ul>
-          <div class="preco"><div class="valor">R$ 1.150<small>no Pix</small></div><div class="parc">ou <b>R$ 1.150 em até 12x</b> no cartão (+ taxas)</div><div class="parc">ou <b>US$ 225 / € 200</b> pela Wise</div></div>
+          <div class="preco"><div class="parc-topo">em até</div><div class="valor">12x de R$ 95,83<small>no cartão + juros</small></div><div class="pix"><b>R$ 1.092,50 no Pix</b> · 5% de desconto</div><div class="total">Valor total: R$ 1.150 · ou US$ 225 / € 200 pela Wise</div><div class="garantia">✓ 7 dias de garantia: desistiu, devolvemos 100%</div></div>
           <a class="btn btn-wpp js-wpp" data-msg="Olá! Quero fazer a Mentoria Individual. 🛥️" href="#"><svg><use href="#i-wpp"/></svg>Quero a individual</a>
         </article>
         <article class="cartao">
@@ -434,7 +461,7 @@
             <li><span>Grupo de WhatsApp dos alunos</span><b>✓</b></li>
             <li><span>Material de Apoio e descontos</span><b>✓</b></li>
           </ul>
-          <div class="preco"><div class="valor">R$ 800<small>no Pix</small></div><div class="parc">ou <b>R$ 800 em até 12x</b> no cartão (+ taxas)</div><div class="parc">ou <b>US$ 160 / € 140</b> pela Wise</div></div>
+          <div class="preco"><div class="parc-topo">em até</div><div class="valor">12x de R$ 66,67<small>no cartão + juros</small></div><div class="pix"><b>R$ 760 no Pix</b> · 5% de desconto</div><div class="total">Valor total: R$ 800 · ou US$ 160 / € 140 pela Wise</div><div class="garantia">✓ 7 dias de garantia: desistiu, devolvemos 100%</div></div>
           <a class="btn btn-wpp js-wpp" data-msg="Olá! Quero fazer a Mentoria em Grupo. 🛥️" href="#"><svg><use href="#i-wpp"/></svg>Quero a mentoria em grupo</a>
         </article>
       </div>
