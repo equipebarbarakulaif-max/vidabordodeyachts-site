@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pré-atendimento · Vida a Bordo de Yachts</title>
+<meta name="robots" content="noindex">
+<meta name="description" content="Conte rapidinho sobre você para a Bárbara analisar o seu caso antes do atendimento.">
+<meta name="theme-color" content="#002445">
+<link rel="icon" type="image/png" href="../img/simbolo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #002445;
+    --azul: #0082A0;
+    --areia: #BAA28C;
+    --areia-claro: #f3ede6;
+    --gelo: #E9EAEE;
+    --branco: #ffffff;
+    --texto: #1f2a37;
+    --texto-suave: #55606e;
+    --wpp: #1f9d55;
+    --erro: #b42318;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; min-height: 100vh;
+    font-family: Montserrat, "Helvetica Neue", Arial, sans-serif;
+    color: var(--texto); font-size: 16px; line-height: 1.6;
+    background: var(--navy);
+    -webkit-font-smoothing: antialiased;
+  }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; }
+
+  .fundo {
+    position: relative; isolation: isolate; color: var(--branco);
+    background: var(--navy) url("../img/hero-yacht.jpg") center / cover no-repeat;
+    padding: calc(28px + env(safe-area-inset-top, 0px)) 16px 120px;
+  }
+  .fundo::before {
+    content: ""; position: absolute; inset: 0; z-index: -1;
+    background: linear-gradient(180deg, rgba(0,36,69,.80) 0%, rgba(0,36,69,.88) 60%, var(--navy) 100%);
+  }
+  .fundo .logo { width: 150px; margin: 0 auto 36px; }
+  .chamada { max-width: 560px; margin: 0 auto; text-align: center; }
+  .sobrelinha { display: block; font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--areia); margin-bottom: 12px; }
+  h1 { margin: 0; font-size: clamp(30px, 6.5vw, 44px); line-height: 1.15; font-weight: 700; letter-spacing: -.5px; text-wrap: balance; }
+  h1 em { font-style: normal; color: var(--areia); }
+  h1::after { content: ""; display: block; width: 74px; height: 9px; margin: 18px auto 0; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 0 470 51'%3E%3Cpath d='M0,29 C15,23 30,15 44,15 C70,15 100,34 131,34 C160,34 185,20 206,4 C198,14 190,27 172,36 C158,43 142,47 128,47 C100,47 70,32 50,25 C38,21 20,24 0,29 Z' fill='%23BAA28C'/%3E%3Cpath transform='translate%28250,0%29' d='M0,29 C15,23 30,15 44,15 C70,15 100,34 131,34 C160,34 185,20 206,4 C198,14 190,27 172,36 C158,43 142,47 128,47 C100,47 70,32 50,25 C38,21 20,24 0,29 Z' fill='%23BAA28C'/%3E%3C/svg%3E") center / contain no-repeat; }
+  .chamada p { margin: 18px auto 0; color: #d9e0e8; font-size: 17px; max-width: 470px; }
+  .capa-x { width: 170px; height: auto; margin: 28px auto 0; border-radius: 6px; box-shadow: 0 18px 40px rgba(0,0,0,.45); transform: rotate(-3deg); }
+
+  .cartao {
+    position: relative; max-width: 560px; margin: -84px auto 0; background: var(--branco);
+    border-radius: 18px; padding: 30px 26px 28px; box-shadow: 0 24px 60px rgba(0,0,0,.28);
+  }
+  .cartao-wrap { padding: 0 16px 48px; }
+  .campo { margin-bottom: 18px; }
+  label, .rotulo { display: block; font-weight: 600; font-size: 14px; color: var(--navy); margin-bottom: 6px; }
+  .opcional { font-weight: 500; color: var(--texto-suave); }
+  input[type=text], input[type=email], input[type=tel] {
+    width: 100%; font: inherit; font-size: 16px; padding: 13px 14px; border: 1.5px solid #cfd4dc; border-radius: 10px;
+    background: #fbfbfc; color: var(--texto); transition: border-color .15s, box-shadow .15s;
+  }
+  input:focus { outline: none; border-color: var(--azul); box-shadow: 0 0 0 3px rgba(0,130,160,.15); background: #fff; }
+  .opcoes { display: flex; flex-wrap: wrap; gap: 8px; }
+  .opcoes label {
+    margin: 0; font-weight: 500; font-size: 14px; color: var(--texto); cursor: pointer;
+    border: 1.5px solid #cfd4dc; border-radius: 30px; padding: 9px 15px; background: #fbfbfc; transition: all .15s;
+  }
+  .opcoes input { position: absolute; opacity: 0; pointer-events: none; }
+  .opcoes input:checked + span { color: var(--branco); }
+  .opcoes label:has(input:checked) { background: var(--navy); border-color: var(--navy); color: var(--branco); }
+  .opcoes label:has(input:focus-visible) { box-shadow: 0 0 0 3px rgba(0,130,160,.3); }
+  .aceite { display: flex; gap: 10px; align-items: flex-start; font-size: 13px; color: var(--texto-suave); font-weight: 500; margin: 6px 0 20px; }
+  .aceite input { margin-top: 3px; width: 18px; height: 18px; accent-color: var(--navy); flex: none; }
+  .armadilha { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+  .btn {
+    display: flex; width: 100%; align-items: center; justify-content: center; gap: 10px;
+    padding: 16px 24px; border: 0; border-radius: 40px; cursor: pointer;
+    font: inherit; font-weight: 700; font-size: 16px; letter-spacing: .3px; text-decoration: none;
+    background: var(--navy); color: var(--branco); transition: transform .15s, background .15s;
+  }
+  .btn:hover { transform: translateY(-2px); background: #0a2f55; }
+  .btn:disabled { opacity: .6; cursor: wait; transform: none; }
+  .btn-wpp { background: var(--wpp); }
+  .btn-wpp:hover { background: #1a8a4a; }
+  .btn svg { width: 20px; height: 20px; flex: none; }
+  .msg-erro:empty { display: none; }
+  .msg-erro { color: var(--erro); font-size: 14px; font-weight: 600; margin-top: 12px; text-align: center; min-height: 1em; }
+
+  .sucesso { display: none; text-align: center; }
+  .sucesso .icone { font-size: 44px; line-height: 1; }
+  .sucesso h2 { color: var(--navy); font-size: 26px; margin: 12px 0 8px; }
+  .sucesso p { color: var(--texto-suave); margin: 0 0 22px; }
+  .enviado form { display: none; }
+  .enviado .sucesso { display: block; }
+
+  .confianca { max-width: 560px; margin: 26px auto 0; display: flex; gap: 14px; align-items: center; color: #c6d0db; font-size: 14px; }
+  .confianca img { width: 52px; height: 52px; border-radius: 50%; object-fit: cover; border: 2px solid var(--areia); flex: none; }
+  .confianca b { color: var(--branco); font-weight: 600; }
+  .rodape { text-align: center; color: #8fa0b3; font-size: 12px; padding: 0 16px 36px; }
+  .rodape a { color: #c6d0db; }
+
+  @media (min-width: 700px) {
+    .cartao { padding: 38px 40px 34px; }
+    .duas { display: grid; grid-template-columns: 1fr 1fr; gap: 0 16px; }
+  }
+
+  .porque { background: var(--areia-claro); border-left: 3px solid var(--areia); border-radius: 0 10px 10px 0; padding: 14px 16px; font-size: 14px; line-height: 1.6; color: var(--texto); margin-bottom: 22px; }
+  .porque b { color: var(--navy); }
+  .cruzeiro-extra { display: none; border-left: 2px solid var(--gelo); padding-left: 14px; margin: -4px 0 18px; }
+  .cruzeiro-extra.on { display: block; }
+  .direto { display: block; text-align: center; margin-top: 16px; font-size: 13px; color: var(--texto-suave); }
+  .direto a { color: var(--azul); font-weight: 600; }
+  select { width: 100%; font: inherit; font-size: 16px; padding: 13px 14px; border: 1.5px solid #cfd4dc; border-radius: 10px; background: #fbfbfc; color: var(--texto); }
+</style>
+</head>
+<body>
+
+<header class="fundo">
+  <a href="../"><img class="logo" src="../img/logo-claro.png" alt="Vida a Bordo de Yachts" width="150" height="69"></a>
+  <div class="chamada">
+    <span class="sobrelinha">Pré-atendimento</span>
+    <h1>Conta pra gente <em>sobre você</em></h1>
+    <p>Leva 1 minuto. Assim que você enviar, o WhatsApp abre para a gente continuar a conversa.</p>
+  </div>
+</header>
+
+<main class="cartao-wrap">
+  <div class="cartao" id="cartao">
+    <div class="porque"><b>Por que é importante?</b> Com essas respostas, a Bárbara já analisa o seu caso antes de falar com você. Assim, no atendimento, a gente vai direto ao ponto: o que faz sentido para o seu perfil e como a mentoria pode te ajudar. 🤍<br><span style="color:var(--texto-suave);font-size:13px">Mari, da equipe Vida a Bordo de Yachts</span></div>
+    <form id="form" novalidate>
+      <div class="campo">
+        <label for="nome">Seu nome</label>
+        <input type="text" id="nome" name="nome" autocomplete="name" required>
+      </div>
+      <div class="duas">
+        <div class="campo">
+          <label for="whatsapp">WhatsApp (com DDD)</label>
+          <input type="tel" id="whatsapp" name="whatsapp" autocomplete="tel" inputmode="tel" placeholder="(11) 99999-9999" required>
+        </div>
+        <div class="campo">
+          <label for="email">E-mail</label>
+          <input type="email" id="email" name="email" autocomplete="email" required>
+        </div>
+      </div>
+      <div class="campo">
+        <span class="rotulo" id="r-ingles">Fala inglês? Qual nível?</span>
+        <div class="opcoes" role="radiogroup" aria-labelledby="r-ingles">
+          <label><input type="radio" name="ingles" value="Não falo" required><span>Não falo</span></label>
+          <label><input type="radio" name="ingles" value="Básico"><span>Básico</span></label>
+          <label><input type="radio" name="ingles" value="Intermediário"><span>Intermediário</span></label>
+          <label><input type="radio" name="ingles" value="Avançado"><span>Avançado</span></label>
+          <label><input type="radio" name="ingles" value="Fluente"><span>Fluente</span></label>
+        </div>
+      </div>
+      <div class="campo">
+        <span class="rotulo" id="r-cruz">Já trabalhou em cruzeiro?</span>
+        <div class="opcoes" role="radiogroup" aria-labelledby="r-cruz">
+          <label><input type="radio" name="cruzeiro" value="Sim" required><span>Sim</span></label>
+          <label><input type="radio" name="cruzeiro" value="Não"><span>Não</span></label>
+        </div>
+      </div>
+      <div class="cruzeiro-extra" id="extra">
+        <div class="campo">
+          <label for="companhia">Qual companhia?</label>
+          <input type="text" id="companhia" name="companhia" placeholder="Ex.: MSC, Costa, Royal Caribbean">
+        </div>
+        <div class="duas">
+          <div class="campo">
+            <label for="posicao_cruzeiro">Qual posição?</label>
+            <input type="text" id="posicao_cruzeiro" name="posicao_cruzeiro" placeholder="Ex.: Housekeeping, Bar">
+          </div>
+          <div class="campo">
+            <label for="tempo_cruzeiro">Por quanto tempo?</label>
+            <input type="text" id="tempo_cruzeiro" name="tempo_cruzeiro" placeholder="Ex.: 2 anos, 3 contratos">
+          </div>
+        </div>
+      </div>
+      <div class="campo">
+        <span class="rotulo" id="r-interesse">Em que posição você pretende embarcar?</span>
+        <div class="opcoes" role="radiogroup" aria-labelledby="r-interesse">
+          <label><input type="radio" name="interesse" value="Interior (Stewardess/Steward)" required><span>Interior (Stew)</span></label>
+          <label><input type="radio" name="interesse" value="Deck (Deckhand)"><span>Deck</span></label>
+          <label><input type="radio" name="interesse" value="Deck/Stew"><span>Deck/Stew</span></label>
+          <label><input type="radio" name="interesse" value="Engenharia (Engineer)"><span>Engenharia</span></label>
+          <label><input type="radio" name="interesse" value="Capitão (Captain)"><span>Capitão</span></label>
+          <label><input type="radio" name="interesse" value="Cozinha (Chef)"><span>Cozinha</span></label>
+          <label><input type="radio" name="interesse" value="Ainda não sei"><span>Ainda não sei</span></label>
+        </div>
+      </div>
+      <div class="campo">
+        <span class="rotulo" id="r-momento">Em que momento você está?</span>
+        <div class="opcoes" role="radiogroup" aria-labelledby="r-momento">
+          <label><input type="radio" name="momento" value="Quero começar agora" required><span>Quero começar agora</span></label>
+          <label><input type="radio" name="momento" value="Nos próximos meses"><span>Nos próximos meses</span></label>
+          <label><input type="radio" name="momento" value="Só pesquisando"><span>Só pesquisando</span></label>
+        </div>
+      </div>
+      <div class="armadilha" aria-hidden="true">
+        <label for="site">Não preencha</label><input type="text" id="site" name="site" tabindex="-1" autocomplete="off">
+      </div>
+      <label class="aceite">
+        <input type="checkbox" id="aceite" required>
+        <span>Autorizo a equipe Vida a Bordo de Yachts a entrar em contato comigo pelo WhatsApp e por e-mail.</span>
+      </label>
+      <button class="btn btn-wpp" type="submit" id="enviar">Enviar e falar no WhatsApp</button>
+      <p class="msg-erro" id="erro" role="alert"></p>
+      <span class="direto">Prefere não preencher agora? <a id="direto" href="#" target="_blank" rel="noopener">Falar direto no WhatsApp</a></span>
+    </form>
+
+    <div class="sucesso" aria-live="polite">
+      <div class="icone">⚓</div>
+      <h2>Recebemos, obrigada!</h2>
+      <p>O WhatsApp vai abrir para a gente continuar a conversa. Se não abrir sozinho, toque abaixo.</p>
+      <a class="btn btn-wpp" id="abrir" href="#" target="_blank" rel="noopener">Abrir o WhatsApp</a>
+    </div>
+  </div>
+
+  <div class="confianca">
+    <img src="../img/barbara-selo.jpg" alt="" width="52" height="52">
+    <span><b>Bárbara Kulaif</b> · 9+ anos a bordo · Below Deck S12. 50+ alunos, 14 já embarcados.</span>
+  </div>
+</main>
+
+<footer class="rodape">
+  <a href="../">vidabordodeyachts.com.br</a> · @vidabordodeyachts
+</footer>
+
+<script>
+  const ENDPOINT = 'https://script.google.com/macros/s/AKfycbzKKHorDmVlxB1MglaIDmLFtnRLLgjfSjtbGDet_Quy1dC0dzTIvN_JT8EvBx3QxINKlg/exec';
+  const WHATSAPP = '5511991245884';
+  const params = new URLSearchParams(location.search);
+  const origem = params.get('origem') || params.get('utm_source') || 'Site';
+  const formato = params.get('formato') || '';
+  const wa = t => 'https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(t);
+  const msgDireta = params.get('msg') || 'Olá! Vim pelo site e quero saber mais sobre a mentoria Vida a Bordo de Yachts. 🛥️';
+  document.getElementById('direto').href = wa(msgDireta);
+
+  const form = document.getElementById('form');
+  const erro = document.getElementById('erro');
+  const botao = document.getElementById('enviar');
+  form.querySelectorAll('input[name=cruzeiro]').forEach(r => r.addEventListener('change', () =>
+    document.getElementById('extra').classList.toggle('on', r.value === 'Sim' && r.checked)));
+
+  form.addEventListener('submit', async (ev) => {
+    ev.preventDefault();
+    erro.textContent = '';
+    const d = Object.fromEntries(new FormData(form));
+    if (!d.nome || !d.whatsapp || !d.email || !d.ingles || !d.cruzeiro || !d.interesse || !d.momento) { erro.textContent = 'Preencha todas as perguntas, por favor.'; return; }
+    if (!/^\S+@\S+\.\S+$/.test(d.email)) { erro.textContent = 'Confira o seu e-mail.'; return; }
+    if (d.whatsapp.replace(/\D/g, '').length < 10) { erro.textContent = 'Confira o seu WhatsApp, com DDD.'; return; }
+    if (!document.getElementById('aceite').checked) { erro.textContent = 'Marque a autorização de contato para continuar.'; return; }
+    if (d.site) return;
+    const primeiro = d.nome.trim().split(' ')[0];
+    const texto = 'Olá! Sou ' + primeiro + ' e acabei de preencher o pré-atendimento' + (formato ? ' (tenho interesse na mentoria ' + formato + ')' : '') + '. 🛥️';
+    const link = wa(texto);
+    document.getElementById('abrir').href = link;
+    botao.disabled = true;
+    botao.textContent = 'Enviando...';
+    try {
+      await fetch(ENDPOINT, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify({ ...d, origem, formato, material: 'Pré-atendimento', pagina: location.href }) });
+    } catch (e) { /* mesmo se falhar, segue para o WhatsApp */ }
+    document.getElementById('cartao').classList.add('enviado');
+    setTimeout(() => { location.href = link; }, 900);
+  });
+</script>
+</body>
+</html>

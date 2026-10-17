@@ -724,7 +724,16 @@
   const WHATSAPP = '5511991245884';
   const MENSAGEM = 'Olá! Vim pelo site e quero saber mais sobre a mentoria Vida a Bordo de Yachts. 🛥️';
   const link = 'https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(MENSAGEM);
-  document.querySelectorAll('.js-wpp').forEach(a => { a.href = link; a.target = '_blank'; a.rel = 'noopener'; });
+  // Botões verdes principais levam ao pré-atendimento (vira lead); o botão flutuante e links pequenos vão direto ao WhatsApp.
+  const formatoDe = m => /individual/i.test(m) ? 'Individual' : /grupo/i.test(m) ? 'em Grupo' : /amigos/i.test(m) ? 'com amigos' : '';
+  document.querySelectorAll('.js-wpp').forEach(a => {
+    const msg = a.dataset.msg || MENSAGEM;
+    if (a.classList.contains('btn')) {
+      a.href = 'atendimento/?origem=site&formato=' + encodeURIComponent(formatoDe(msg)) + '&msg=' + encodeURIComponent(msg);
+    } else {
+      a.href = 'https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(msg); a.target = '_blank'; a.rel = 'noopener';
+    }
+  });
   document.getElementById('ano').textContent = new Date().getFullYear();
 </script>
 </body>
