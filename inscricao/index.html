@@ -450,7 +450,7 @@
   var ENDPOINT = 'https://script.google.com/macros/s/AKfycbzKKHorDmVlxB1MglaIDmLFtnRLLgjfSjtbGDet_Quy1dC0dzTIvN_JT8EvBx3QxINKlg/exec';
   var WHATSAPP = '5511991245884';
   var VERSAO_PADRAO = 4;   // usada só se a página do contrato não carregar
-  var PIX = { chave: '60321788000160', nome: 'BARBARA KULAIF ABOUD', cidade: 'SAO PAULO' };
+  var PIX = { chave: '60321788000160', nome: 'BARBARA KULAIF', cidade: 'SAO PAULO' };
 
   var form = document.getElementById('form');
   var steps = [].slice.call(form.querySelectorAll('.step'));
@@ -710,7 +710,7 @@
         ok({ ok: true, email: d.email, primeiroNome: d.nome.split(' ')[0], nomeTipo: d.servico, antigo: /^Sim/.test(d.antigo),
           pagamento: d.pagamento, linkPagamento: 'https://www.mercadopago.com.br/', valor: ind ? 'R$ 1.150,00' : 'R$ 800,00',
           valorPix: ind ? 'R$ 1.092,50' : 'R$ 760,00', valorPixNumero: ind ? 1092.5 : 760, pixChave: '60.321.788/0001-60',
-          pixTitular: 'Bárbara Kulaif Aboud', parcelas: 12, prazoHoras: 24, prazo: 'amanhã às ' + new Date().toTimeString().slice(0, 5), whatsapp: WHATSAPP });
+          pixTitular: 'Bárbara Kulaif', parcelas: 12, prazoHoras: 24, prazo: 'amanhã às ' + new Date().toTimeString().slice(0, 5), whatsapp: WHATSAPP });
       }, 1200);
     });
   }
@@ -735,7 +735,7 @@
       valorPix = Number(r.valorPixNumero) || 0;
       $('valor-pix').textContent = r.valorPix || '';
       $('pix-chave').textContent = r.pixChave || '60.321.788/0001-60';
-      $('pix-titular').textContent = r.pixTitular || 'Bárbara Kulaif Aboud';
+      $('pix-titular').textContent = 'Bárbara Kulaif';
       $('valor-cartao').textContent = r.valor || '';
       $('cartao-detalhe').textContent = 'Em até ' + (r.parcelas || 12) + 'x pelo Mercado Pago (+ juros), com confirmação automática.';
       if (r.linkPagamento) $('link-cartao').href = r.linkPagamento;
