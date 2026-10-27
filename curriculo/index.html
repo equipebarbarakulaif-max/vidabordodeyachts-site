@@ -89,7 +89,55 @@
   }
   .btn:hover { transform: translateY(-2px); background: #1a8a4a; }
   .btn svg { width: 20px; height: 20px; flex: none; }
-  .cta p { color: var(--texto-suave); margin: 0 0 18px; }
+  .btn-navy { background: var(--navy); }
+  .btn-navy:hover { background: #0a2f55; }
+  .btn:disabled { opacity: .6; cursor: wait; transform: none; }
+  .btn-claro { width: auto; display: inline-flex; margin-top: 18px; background: var(--areia); color: var(--navy); }
+  .btn-claro:hover { background: var(--branco); }
+  .chamada .selo { display: table; margin: 22px auto 0; }
+
+  #pedido { scroll-margin-top: 16px; }
+  #pedido h3 { margin: 26px 0 12px; padding-top: 18px; border-top: 1px solid #e6e9ee; color: var(--navy); font-size: 16px; }
+  .intro { color: var(--texto-suave); margin: -6px 0 6px; font-size: 15px; }
+  .dica { background: var(--areia-claro); border-left: 3px solid var(--areia); border-radius: 8px; padding: 12px 14px; margin: 0 0 16px; font-size: 14px; color: var(--texto); }
+  .dica b { color: var(--navy); }
+  .campo { margin-bottom: 16px; }
+  label, .rotulo { display: block; font-weight: 600; font-size: 14px; color: var(--navy); margin-bottom: 6px; }
+  .opcional { font-weight: 500; color: var(--texto-suave); }
+  input[type=text], input[type=email], input[type=tel], input[type=date], textarea {
+    width: 100%; font: inherit; font-size: 16px; padding: 12px 14px; border: 1.5px solid #cfd4dc; border-radius: 10px;
+    background: #fbfbfc; color: var(--texto); transition: border-color .15s, box-shadow .15s;
+  }
+  textarea { resize: vertical; line-height: 1.5; }
+  input:focus, textarea:focus { outline: none; border-color: var(--azul); box-shadow: 0 0 0 3px rgba(0,130,160,.15); background: #fff; }
+  .invalido, .opcoes.invalido label { border-color: #b42318 !important; }
+  .opcoes { display: flex; flex-wrap: wrap; gap: 8px; }
+  .opcoes label {
+    margin: 0; font-weight: 500; font-size: 14px; color: var(--texto); cursor: pointer;
+    border: 1.5px solid #cfd4dc; border-radius: 30px; padding: 9px 15px; background: #fbfbfc; transition: all .15s;
+  }
+  .opcoes input { position: absolute; opacity: 0; pointer-events: none; }
+  .opcoes label:has(input:checked) { background: var(--navy); border-color: var(--navy); color: var(--branco); }
+  .opcoes label:has(input:focus-visible) { box-shadow: 0 0 0 3px rgba(0,130,160,.3); }
+  .aceite { display: flex; gap: 10px; align-items: flex-start; font-size: 13px; color: var(--texto-suave); font-weight: 500; margin: 22px 0 20px; }
+  .aceite input { margin-top: 3px; width: 18px; height: 18px; accent-color: var(--navy); flex: none; }
+  .armadilha { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+  .msg-erro:empty { display: none; }
+  .msg-erro { color: #b42318; font-size: 14px; font-weight: 600; margin: 12px 0 0; text-align: center; }
+
+  .pagto { border: 1.5px solid #dde1e7; border-radius: 14px; padding: 16px; margin-top: 14px; }
+  .pagto .titulo { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 10px; font-weight: 700; color: var(--navy); }
+  .pagto .titulo .valor { font-size: 20px; }
+  .pagto .detalhe { font-size: 14px; color: var(--texto-suave); margin: 4px 0 12px; }
+  .pagto .btn { margin-top: 10px; }
+  .pix-grade { display: grid; grid-template-columns: 132px 1fr; gap: 14px; align-items: center; }
+  .pix-grade .qr svg { width: 100%; height: auto; display: block; }
+  .pix-grade .chave { font-size: 13px; color: var(--texto-suave); min-width: 0; }
+  .pix-grade .chave strong { display: block; color: var(--navy); font-size: 17px; margin: 2px 0 4px; word-break: break-all; }
+  @media (max-width: 440px) { .pix-grade { grid-template-columns: 1fr; text-align: center; } .pix-grade .qr { max-width: 170px; margin: 0 auto; width: 100%; } }
+  .rotulo-pix { margin: 14px 0 4px; font-size: 13px; }
+  .pix-codigo { font-size: 12px; font-family: ui-monospace, Menlo, monospace; color: var(--texto-suave); word-break: break-all; resize: none; }
+  .ok { font-weight: 600; font-size: 13px; min-height: 18px; margin-top: 8px; text-align: center; color: var(--azul); }
 
   .confianca { max-width: 620px; margin: 26px auto 0; display: flex; gap: 14px; align-items: center; color: #c6d0db; font-size: 14px; }
   .confianca img { width: 52px; height: 52px; border-radius: 50%; object-fit: cover; border: 2px solid var(--areia); flex: none; }
@@ -100,6 +148,7 @@
   @media (min-width: 700px) {
     .cartao { padding: 38px 40px 34px; }
     .modelos { grid-template-columns: repeat(4, 1fr); }
+    .duas { display: grid; grid-template-columns: 1fr 1fr; gap: 0 16px; }
   }
 </style>
 </head>
@@ -111,7 +160,8 @@
     <span class="sobrelinha">Criação de Currículo</span>
     <h1>O seu CV pronto para <em>Yachts</em></h1>
     <p>Você responde a um formulário e a nossa equipe escreve e monta o seu currículo em inglês, no padrão que os Yachts de Luxo pedem.</p>
-    <span class="selo">Entrega em até 3 dias úteis</span>
+    <span class="selo">R$ 197 · entrega em até 3 dias úteis</span>
+    <a class="btn btn-claro" href="#pedido">Fazer o meu pedido</a>
   </div>
 </header>
 
@@ -119,10 +169,10 @@
   <section class="cartao">
     <h2>Como funciona</h2>
     <ol class="passos">
-      <li><div><b>Você chama a equipe no WhatsApp</b><span>A gente explica os detalhes e envia o pagamento.</span></div></li>
-      <li><div><b>Preenche o formulário</b><span>Em português mesmo: experiências, cursos, idiomas, foto e o cargo que você quer.</span></div></li>
+      <li><div><b>Preenche o formulário abaixo</b><span>Em português mesmo: experiências, cursos, idiomas e o cargo que você quer.</span></div></li>
+      <li><div><b>Paga R$ 197 no Pix e manda a foto</b><span>O comprovante, a sua foto e os certificados vão pelo WhatsApp.</span></div></li>
       <li><div><b>A equipe escreve e monta</b><span>Perfil, experiências reescritas com as palavras que Captains e Chief Stewardesses procuram, tudo em inglês.</span></div></li>
-      <li><div><b>Você recebe o CV pronto</b><span>Em PDF e em arquivo editável, em até 3 dias úteis, com uma rodada de ajustes.</span></div></li>
+      <li><div><b>Você recebe o CV pronto</b><span>Em PDF e em arquivo editável, em até 3 dias úteis depois do Pix e da foto, com uma rodada de ajustes.</span></div></li>
     </ol>
   </section>
 
@@ -149,13 +199,121 @@
     <p class="nota">A equipe não inventa experiências nem certificados: tudo no CV vem das suas respostas.</p>
   </section>
 
-  <section class="cartao cta">
-    <h2>Quer o seu CV pronto?</h2>
-    <p>Fale com a nossa equipe e conte o cargo que você quer. A gente te passa o valor e os próximos passos.</p>
-    <a class="btn" href="https://wa.me/5511991245884?text=Ol%C3%A1!%20Quero%20saber%20sobre%20a%20Cria%C3%A7%C3%A3o%20de%20Curr%C3%ADculo%20para%20Yachts." target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1s-.5-.1-.7.1-.8 1-1 1.2-.4.2-.7.1a8.2 8.2 0 0 1-4-3.5c-.3-.5.3-.5.9-1.6.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6a1.1 1.1 0 0 0-.8.4 3.4 3.4 0 0 0-1 2.5 5.9 5.9 0 0 0 1.2 3.1 13.4 13.4 0 0 0 5.2 4.6c1.9.8 2.7.9 3.6.7a3.1 3.1 0 0 0 2-1.4 2.5 2.5 0 0 0 .2-1.4c-.1-.1-.3-.2-.7-.4zM12 21.8a9.8 9.8 0 0 1-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4A9.8 9.8 0 1 1 12 21.8zm8.4-18.2A11.8 11.8 0 0 0 1.8 17.8L.1 24l6.3-1.7A11.8 11.8 0 0 0 12 23.7 11.8 11.8 0 0 0 20.4 3.6z"/></svg>
-      Quero o meu CV pronto
-    </a>
+  <section class="cartao" id="pedido">
+    <form id="form" novalidate>
+      <h2>Faça o seu pedido</h2>
+      <p class="intro">Leva uns 10 minutos. Pode escrever em português: a tradução é com a gente. Quanto mais detalhes, melhor fica o CV.</p>
+
+      <h3>Seus dados</h3>
+      <div class="campo"><label for="nome">Nome completo</label><input type="text" id="nome" name="nome" autocomplete="name" required></div>
+      <div class="duas">
+        <div class="campo"><label for="whatsapp">WhatsApp (com DDD)</label><input type="tel" id="whatsapp" name="whatsapp" autocomplete="tel" inputmode="tel" placeholder="(11) 99999-9999" required></div>
+        <div class="campo"><label for="email">E-mail</label><input type="email" id="email" name="email" autocomplete="email" required></div>
+      </div>
+      <div class="duas">
+        <div class="campo"><label for="nascimento">Data de nascimento</label><input type="date" id="nascimento" name="nascimento" min="1940-01-01" required></div>
+        <div class="campo"><label for="nacionalidade">Nacionalidade</label><input type="text" id="nacionalidade" name="nacionalidade" value="Brasileira" required></div>
+      </div>
+      <div class="campo"><label for="cidade">Cidade e país onde você mora</label><input type="text" id="cidade" name="cidade" placeholder="Ex.: Florianópolis, Brasil" required></div>
+
+      <h3>O CV</h3>
+      <div class="campo">
+        <span class="rotulo" id="r-cargo">Cargo que você quer</span>
+        <div class="opcoes" role="radiogroup" aria-labelledby="r-cargo" data-grupo="cargo">
+          <label><input type="radio" name="cargo" value="Junior Stewardess/Steward"><span>Junior Stew</span></label>
+          <label><input type="radio" name="cargo" value="Deckhand"><span>Deckhand</span></label>
+          <label><input type="radio" name="cargo" value="Deck/Stew"><span>Deck/Stew</span></label>
+          <label><input type="radio" name="cargo" value="Chef"><span>Chef</span></label>
+          <label><input type="radio" name="cargo" value="Engineer"><span>Engineer</span></label>
+          <label><input type="radio" name="cargo" value="Outro"><span>Outro</span></label>
+        </div>
+      </div>
+      <div class="campo">
+        <span class="rotulo" id="r-modelo">Modelo</span>
+        <div class="opcoes" role="radiogroup" aria-labelledby="r-modelo" data-grupo="modelo">
+          <label><input type="radio" name="modelo" value="Oceano"><span>Oceano</span></label>
+          <label><input type="radio" name="modelo" value="Clássico Cinza"><span>Clássico Cinza</span></label>
+          <label><input type="radio" name="modelo" value="Areia"><span>Areia</span></label>
+          <label><input type="radio" name="modelo" value="Azul-Marinho"><span>Azul-Marinho</span></label>
+        </div>
+      </div>
+
+      <h3>Experiências</h3>
+      <p class="dica"><b>Quanto melhor você descrever, mais completo fica o seu currículo.</b> Não economize experiências: coloque todas. Para cada uma, escreva o início e o término (mês e ano), o nome da vaga e o que você fazia.</p>
+      <div class="campo"><label for="exp_yacht">Experiência em Yachts ou cruzeiros <span class="opcional">(se tiver)</span></label><textarea id="exp_yacht" name="exp_yacht" rows="5" placeholder="Ex.: M/Y Nome do Yacht (45m) ou navio de cruzeiro · Junior Stewardess · 03/2024 a 10/2024 · arrumação das cabines, serviço de mesa, lavanderia"></textarea></div>
+      <div class="campo"><label for="exp_outras">Outras experiências de trabalho</label><textarea id="exp_outras" name="exp_outras" rows="7" placeholder="Ex.: Hotel Tal, São Paulo · Recepcionista · 01/2022 a 12/2023 · check-in e check-out, atendimento a hóspedes estrangeiros, reservas" required></textarea></div>
+
+      <h3>Cursos e idiomas</h3>
+      <div class="campo"><label for="cursos">Cursos e certificados <span class="opcional">(com datas)</span></label><textarea id="cursos" name="cursos" rows="3" placeholder="Ex.: STCW (05/2026), ENG1 (06/2026), Food Hygiene, curso de barista"></textarea></div>
+      <div class="campo">
+        <span class="rotulo" id="r-ingles">Seu inglês</span>
+        <div class="opcoes" role="radiogroup" aria-labelledby="r-ingles" data-grupo="ingles">
+          <label><input type="radio" name="ingles" value="Básico"><span>Básico</span></label>
+          <label><input type="radio" name="ingles" value="Intermediário"><span>Intermediário</span></label>
+          <label><input type="radio" name="ingles" value="Avançado"><span>Avançado</span></label>
+          <label><input type="radio" name="ingles" value="Fluente"><span>Fluente</span></label>
+        </div>
+      </div>
+      <div class="campo"><label for="idiomas">Outros idiomas <span class="opcional">(e nível)</span></label><input type="text" id="idiomas" name="idiomas" placeholder="Ex.: espanhol intermediário"></div>
+
+      <h3>Documentos</h3>
+      <div class="duas">
+        <div class="campo">
+          <span class="rotulo" id="r-passaporte">Passaporte válido?</span>
+          <div class="opcoes" role="radiogroup" aria-labelledby="r-passaporte" data-grupo="passaporte">
+            <label><input type="radio" name="passaporte" value="Sim"><span>Sim</span></label>
+            <label><input type="radio" name="passaporte" value="Não"><span>Não</span></label>
+          </div>
+        </div>
+        <div class="campo">
+          <span class="rotulo" id="r-tatuagem">Tatuagem visível de uniforme?</span>
+          <div class="opcoes" role="radiogroup" aria-labelledby="r-tatuagem" data-grupo="tatuagem">
+            <label><input type="radio" name="tatuagem" value="Não"><span>Não</span></label>
+            <label><input type="radio" name="tatuagem" value="Sim"><span>Sim</span></label>
+          </div>
+        </div>
+      </div>
+      <div class="campo"><label for="vistos">Vistos e outras cidadanias <span class="opcional">(se tiver)</span></label><input type="text" id="vistos" name="vistos" placeholder="Ex.: B1/B2, cidadania italiana"></div>
+
+      <h3>Para completar <span class="opcional">(opcional)</span></h3>
+      <div class="campo"><label for="habilidades">Habilidades e hobbies</label><textarea id="habilidades" name="habilidades" rows="3" placeholder="Ex.: mergulho, esportes, arranjos de flores, mixologia, primeiros socorros"></textarea></div>
+      <div class="campo"><label for="referencias">Referências</label><textarea id="referencias" name="referencias" rows="3" placeholder="Até 3 pessoas: nome, cargo, empresa e contato (telefone ou e-mail)"></textarea></div>
+      <div class="campo"><label for="obs">Algo mais que a equipe deva saber?</label><textarea id="obs" name="obs" rows="2"></textarea></div>
+
+      <div class="armadilha" aria-hidden="true"><label for="site">Não preencha</label><input type="text" id="site" name="site" tabindex="-1" autocomplete="off"></div>
+      <label class="aceite">
+        <input type="checkbox" id="aceite">
+        <span>Entendi que o prazo de 3 dias úteis começa depois do Pix e do envio da foto, que tenho uma rodada de ajustes e autorizo a equipe Vida a Bordo de Yachts a me chamar no WhatsApp e por e-mail.</span>
+      </label>
+      <button class="btn btn-navy" type="submit" id="enviar">Enviar e ir para o pagamento</button>
+      <p class="msg-erro" id="erro" role="alert"></p>
+    </form>
+
+    <div id="final" hidden>
+      <h2 id="final-titulo">Pedido recebido!</h2>
+      <p class="intro">Agora é só pagar e mandar a sua foto. O prazo de 3 dias úteis começa quando os dois chegarem.</p>
+      <div class="pagto">
+        <div class="titulo"><span>Pix</span><span class="valor">R$ 197,00</span></div>
+        <p class="detalhe">Abra o app do banco e escaneie o QR Code, ou use o Pix copia e cola abaixo.</p>
+        <div class="pix-grade">
+          <div class="qr" id="qr" role="img" aria-label="QR Code do Pix"></div>
+          <div class="chave">Chave Pix (CNPJ)<strong>60.321.788/0001-60</strong>Titular: Bárbara Kulaif</div>
+        </div>
+        <label for="pix-codigo" class="rotulo-pix">Pix copia e cola</label>
+        <textarea id="pix-codigo" class="pix-codigo" readonly rows="3" onfocus="this.select()"></textarea>
+        <button type="button" class="btn btn-navy" id="copiar-pix">Copiar código Pix (copia e cola)</button>
+        <div class="ok" id="pix-ok" aria-live="polite"></div>
+      </div>
+      <div class="pagto">
+        <div class="titulo"><span>Depois de pagar</span></div>
+        <p class="detalhe">Mande no WhatsApp o comprovante, uma foto sua de rosto (fundo claro, sorrindo, de uniforme ou roupa neutra) e os certificados que tiver.</p>
+        <a class="btn" id="link-envio" href="#" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1s-.5-.1-.7.1-.8 1-1 1.2-.4.2-.7.1a8.2 8.2 0 0 1-4-3.5c-.3-.5.3-.5.9-1.6.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6a1.1 1.1 0 0 0-.8.4 3.4 3.4 0 0 0-1 2.5 5.9 5.9 0 0 0 1.2 3.1 13.4 13.4 0 0 0 5.2 4.6c1.9.8 2.7.9 3.6.7a3.1 3.1 0 0 0 2-1.4 2.5 2.5 0 0 0 .2-1.4c-.1-.1-.3-.2-.7-.4zM12 21.8a9.8 9.8 0 0 1-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4A9.8 9.8 0 1 1 12 21.8zm8.4-18.2A11.8 11.8 0 0 0 1.8 17.8L.1 24l6.3-1.7A11.8 11.8 0 0 0 12 23.7 11.8 11.8 0 0 0 20.4 3.6z"/></svg>
+          Enviar comprovante e foto
+        </a>
+      </div>
+      <p class="nota">Prefere pagar no cartão? <a id="link-cartao" href="#" target="_blank" rel="noopener">Chame a gente no WhatsApp</a>.</p>
+    </div>
   </section>
 
   <div class="confianca">
@@ -166,5 +324,117 @@
 <footer class="rodape">
   <a href="../">vidabordodeyachts.com.br</a> · @vidabordodeyachts
 </footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+<script>
+(function () {
+  // Mesmo Apps Script da inscrição: com tipo 'curriculo' o pedido vai para a aba "Currículos" da planilha.
+  var ENDPOINT = 'https://script.google.com/macros/s/AKfycbzKKHorDmVlxB1MglaIDmLFtnRLLgjfSjtbGDet_Quy1dC0dzTIvN_JT8EvBx3QxINKlg/exec';
+  var WHATSAPP = '5511991245884';
+  var PIX = { chave: '60321788000160', nome: 'BARBARA KULAIF', cidade: 'SAO PAULO', valor: 197 };
+  var form = document.getElementById('form');
+  var erro = document.getElementById('erro');
+  var botao = document.getElementById('enviar');
+  var params = new URLSearchParams(location.search);
+  var origem = params.get('origem') || params.get('utm_source') || 'Site';
+
+  function $(id) { return document.getElementById(id); }
+  function linkWhats(texto) { return 'https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(texto); }
+  function grupo(nome) { return form.querySelector('[data-grupo="' + nome + '"]'); }
+
+  $('whatsapp').addEventListener('input', function (e) {
+    var n = e.target.value.replace(/\D/g, '').slice(0, 11);
+    if (n.length > 6) e.target.value = '(' + n.slice(0, 2) + ') ' + n.slice(2, n.length - 4) + '-' + n.slice(-4);
+    else if (n.length > 2) e.target.value = '(' + n.slice(0, 2) + ') ' + n.slice(2);
+  });
+  form.addEventListener('input', function (e) { e.target.classList.remove('invalido'); });
+  form.addEventListener('change', function (e) {
+    var g = e.target.closest('[data-grupo]');
+    if (g) g.classList.remove('invalido');
+  });
+
+  function falhar(el, msg) {
+    el.classList.add('invalido');
+    erro.textContent = msg;
+    el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    if (el.focus && el.tagName !== 'DIV') el.focus({ preventScroll: true });
+    return false;
+  }
+  function validar(d) {
+    var obrigatorios = [['nome', 'Escreva o seu nome completo.'], ['whatsapp', 'Escreva o seu WhatsApp com DDD.'], ['email', 'Escreva o seu e-mail.'],
+      ['nascimento', 'Coloque a sua data de nascimento.'], ['nacionalidade', 'Coloque a sua nacionalidade.'], ['cidade', 'Conte onde você mora.']];
+    for (var i = 0; i < obrigatorios.length; i++) if (!d[obrigatorios[i][0]]) return falhar($(obrigatorios[i][0]), obrigatorios[i][1]);
+    if (d.whatsapp.replace(/\D/g, '').length < 10) return falhar($('whatsapp'), 'Confira o seu WhatsApp, com DDD.');
+    if (!/^\S+@\S+\.\S+$/.test(d.email)) return falhar($('email'), 'Confira o seu e-mail.');
+    if (!d.cargo) return falhar(grupo('cargo'), 'Escolha o cargo que você quer.');
+    if (!d.modelo) return falhar(grupo('modelo'), 'Escolha o modelo do CV.');
+    if (d.exp_outras.length < 20) return falhar($('exp_outras'), 'Conte as suas experiências de trabalho, com empresa, cargo e período.');
+    if (!d.ingles) return falhar(grupo('ingles'), 'Marque o seu nível de inglês.');
+    if (!d.passaporte) return falhar(grupo('passaporte'), 'Responda se você tem passaporte válido.');
+    if (!d.tatuagem) return falhar(grupo('tatuagem'), 'Responda sobre tatuagem visível.');
+    if (!$('aceite').checked) return falhar($('aceite'), 'Marque a caixa de confirmação para continuar.');
+    return true;
+  }
+
+  form.addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    erro.textContent = '';
+    var d = {};
+    new FormData(form).forEach(function (v, k) { d[k] = String(v).trim(); });
+    if (!validar(d)) return;
+    if (d.site) return;   // robô
+    botao.disabled = true;
+    botao.textContent = 'Enviando...';
+    fetch(ENDPOINT, {
+      method: 'POST', mode: 'no-cors',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify(Object.assign({}, d, { tipo: 'curriculo', material: 'Criação de Currículo', origem: origem, pagina: location.href }))
+    }).then(function () {
+      telaFinal(d);
+    }).catch(function () {
+      erro.innerHTML = 'Não conseguimos enviar agora. Confira a internet e tente de novo, ou <a href="' +
+        linkWhats('Olá! Quero fazer o pedido da Criação de Currículo. Meu nome é ' + d.nome + '.') + '">fale com a gente no WhatsApp</a>.';
+      botao.disabled = false;
+      botao.textContent = 'Enviar e ir para o pagamento';
+    });
+  });
+
+  function telaFinal(d) {
+    form.hidden = true;
+    $('final-titulo').textContent = 'Pedido recebido, ' + d.nome.split(' ')[0] + '!';
+    $('link-envio').href = linkWhats('Olá! Fiz o pedido da Criação de Currículo (modelo ' + d.modelo + '). Meu nome é ' + d.nome + '. Segue o comprovante do Pix, a minha foto e os certificados.');
+    $('link-cartao').href = linkWhats('Olá! Fiz o pedido da Criação de Currículo e quero pagar no cartão. Meu nome é ' + d.nome + '.');
+    $('pix-codigo').value = codigoPix();
+    if (window.qrcode) {
+      var q = qrcode(0, 'M'); q.addData(codigoPix()); q.make();
+      $('qr').innerHTML = q.createSvgTag({ cellSize: 4, margin: 0, scalable: true });
+    } else $('qr').hidden = true;
+    $('final').hidden = false;
+    $('pedido').scrollIntoView({ block: 'start' });
+  }
+
+  // Pix "copia e cola" (BR Code do Banco Central), igual ao da inscrição
+  function campoPix(id, v) { return id + String(v.length).padStart(2, '0') + v; }
+  function crc16(t) {
+    var c = 0xFFFF;
+    for (var i = 0; i < t.length; i++) {
+      c ^= t.charCodeAt(i) << 8;
+      for (var j = 0; j < 8; j++) c = (c & 0x8000) ? ((c << 1) ^ 0x1021) & 0xFFFF : (c << 1) & 0xFFFF;
+    }
+    return c.toString(16).toUpperCase().padStart(4, '0');
+  }
+  function codigoPix() {
+    var p = campoPix('00', '01') + campoPix('26', campoPix('00', 'BR.GOV.BCB.PIX') + campoPix('01', PIX.chave)) +
+      campoPix('52', '0000') + campoPix('53', '986') + campoPix('54', PIX.valor.toFixed(2)) +
+      campoPix('58', 'BR') + campoPix('59', PIX.nome) + campoPix('60', PIX.cidade) + campoPix('62', campoPix('05', '***')) + '6304';
+    return p + crc16(p);
+  }
+  $('copiar-pix').addEventListener('click', function () {
+    var codigo = codigoPix(), ok = $('pix-ok');
+    function feito() { ok.textContent = 'Código copiado! No app do banco, use Pix > Copia e Cola.'; }
+    if (navigator.clipboard) navigator.clipboard.writeText(codigo).then(feito).catch(function () { window.prompt('Copie o código Pix:', codigo); });
+    else window.prompt('Copie o código Pix:', codigo);
+  });
+})();
+</script>
 </body>
 </html>
