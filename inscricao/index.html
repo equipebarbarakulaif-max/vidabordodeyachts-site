@@ -188,6 +188,7 @@
     .cartao { padding: 34px 38px 32px; }
   }
 </style>
+<script src="/pixel.js" defer></script>
 </head>
 <body>
 
@@ -690,6 +691,7 @@
     }).then(function (r) { return r.json(); });
     pedido.then(function (r) {
       if (!r || !r.ok) throw new Error((r && r.erro) || 'erro');
+      if (window.fbq) fbq('track', 'CompleteRegistration', { content_name: d.servico });
       telaFinal(r, d);
     }).catch(function (e) {
       enviando = false;

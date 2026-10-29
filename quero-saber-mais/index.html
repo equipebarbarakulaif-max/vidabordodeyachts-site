@@ -114,6 +114,7 @@
     .duas { display: grid; grid-template-columns: 1fr 1fr; gap: 0 16px; }
   }
 </style>
+<script src="/pixel.js" defer></script>
 </head>
 <body>
 
@@ -232,6 +233,7 @@
         body: JSON.stringify({ ...d, origem, material, pagina: location.href })
       });
       document.getElementById('cartao').classList.add('enviado');
+      if (window.fbq) fbq('track', 'Lead', { content_name: 'Modelo de CV' });
     } catch (e) {
       const texto = 'Olá! Quero receber o Modelo de CV para Yachts. Meu nome é ' + d.nome + '.';
       erro.innerHTML = 'Não conseguimos enviar agora. <a href="https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(texto) + '">Fale com a gente no WhatsApp</a>.';

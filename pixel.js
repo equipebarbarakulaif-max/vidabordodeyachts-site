@@ -1,0 +1,15 @@
+// Meta Pixel (Pixel de Bárbara Kulaif) + evento "Contact" em todo clique para o WhatsApp
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '373479003522225');
+fbq('track', 'PageView');
+
+document.addEventListener('click', function (ev) {
+  var a = ev.target.closest && ev.target.closest('a[href]');
+  if (a && /(wa\.me|api\.whatsapp\.com|whatsapp:)/i.test(a.href)) {
+    fbq('track', 'Contact', { content_name: 'WhatsApp', pagina: location.pathname });
+  }
+}, true);
