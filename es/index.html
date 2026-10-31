@@ -11,8 +11,11 @@
 <meta property="og:image" content="https://vidabordodeyachts.com.br/img/hero-yacht.jpg">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="es_LA">
-<link rel="alternate" hreflang="es" href="https://vidabordodeyachts.com.br/es/">
+<link rel="canonical" href="https://vidabordodeyachts.com.br/es/">
 <link rel="alternate" hreflang="pt-BR" href="https://vidabordodeyachts.com.br/">
+<link rel="alternate" hreflang="en" href="https://vidabordodeyachts.com.br/en/">
+<link rel="alternate" hreflang="es" href="https://vidabordodeyachts.com.br/es/">
+<link rel="alternate" hreflang="x-default" href="https://vidabordodeyachts.com.br/">
 <link rel="icon" type="image/png" href="../img/simbolo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -71,15 +74,22 @@
   .btn svg { width: 20px; height: 20px; flex: none; }
 
   /* Topo */
-  .idioma { position:absolute; right:20px; top:50%; transform:translateY(-50%); font-size:13px; font-weight:600; letter-spacing:1px; color:#d9e0e8; text-decoration:none; border:1px solid rgba(233,234,238,.35); padding:6px 12px; border-radius:20px; }
-  .idioma:hover { border-color: var(--areia); color: var(--areia); }
-  .topo .wrap { position: relative; }
   .topo {
     position: absolute; inset: 0 0 auto 0; z-index: 5;
     padding-top: env(safe-area-inset-top, 0px);
   }
   .topo .wrap { display: flex; align-items: center; justify-content: center; padding-block: 22px; }
   .topo img { width: 170px; height: auto; }
+  .topo .wrap { position: relative; }
+  .lang { position: absolute; right: 20px; top: 50%; transform: translateY(-50%); display: flex; gap: 2px; padding: 3px; border: 1px solid rgba(233,234,238,.35); border-radius: 20px; }
+  .lang a { font-size: 12.5px; font-weight: 600; letter-spacing: 1px; line-height: 1; color: #d9e0e8; text-decoration: none; padding: 6px 10px; border-radius: 16px; }
+  .lang a:hover { color: var(--areia); }
+  .lang a[aria-current="page"] { background: var(--areia); color: var(--navy); }
+  @media (max-width: 560px) {
+    .topo .wrap { justify-content: flex-start; padding-block: 16px; }
+    .topo img { width: 124px; }
+    .lang a { padding: 6px 8px; }
+  }
 
   /* Hero */
   .hero {
@@ -332,7 +342,11 @@
 <header class="topo">
   <div class="wrap">
     <img src="../img/logo-claro.png" alt="Vida a Bordo de Yachts" width="170" height="78">
-    <a class="idioma" href="../" hreflang="pt-BR" lang="pt-BR">PT</a>
+    <nav class="lang" aria-label="Idioma">
+      <a href="../" hreflang="pt-BR" lang="pt-BR">PT</a>
+      <a href="../en/" hreflang="en" lang="en">EN</a>
+      <a href="./" hreflang="es" lang="es" aria-current="page">ES</a>
+    </nav>
   </div>
 </header>
 

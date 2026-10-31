@@ -10,6 +10,11 @@
 <meta property="og:description" content="Do primeiro passo ao embarque: informação, estratégia e uma comunidade para você entrar na indústria dos Yachts.">
 <meta property="og:image" content="https://vidabordodeyachts.com.br/img/hero-yacht.jpg">
 <meta property="og:type" content="website">
+<link rel="canonical" href="https://vidabordodeyachts.com.br/">
+<link rel="alternate" hreflang="pt-BR" href="https://vidabordodeyachts.com.br/">
+<link rel="alternate" hreflang="en" href="https://vidabordodeyachts.com.br/en/">
+<link rel="alternate" hreflang="es" href="https://vidabordodeyachts.com.br/es/">
+<link rel="alternate" hreflang="x-default" href="https://vidabordodeyachts.com.br/">
 <link rel="icon" type="image/png" href="img/simbolo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -74,6 +79,16 @@
   }
   .topo .wrap { display: flex; align-items: center; justify-content: center; padding-block: 22px; }
   .topo img { width: 170px; height: auto; }
+  .topo .wrap { position: relative; }
+  .lang { position: absolute; right: 20px; top: 50%; transform: translateY(-50%); display: flex; gap: 2px; padding: 3px; border: 1px solid rgba(233,234,238,.35); border-radius: 20px; }
+  .lang a { font-size: 12.5px; font-weight: 600; letter-spacing: 1px; line-height: 1; color: #d9e0e8; text-decoration: none; padding: 6px 10px; border-radius: 16px; }
+  .lang a:hover { color: var(--areia); }
+  .lang a[aria-current="page"] { background: var(--areia); color: var(--navy); }
+  @media (max-width: 560px) {
+    .topo .wrap { justify-content: flex-start; padding-block: 16px; }
+    .topo img { width: 124px; }
+    .lang a { padding: 6px 8px; }
+  }
 
   /* Hero */
   .hero {
@@ -396,6 +411,11 @@
 <header class="topo">
   <div class="wrap">
     <img src="img/logo-claro.png" alt="Vida a Bordo de Yachts" width="170" height="78">
+    <nav class="lang" aria-label="Idioma">
+      <a href="./" hreflang="pt-BR" lang="pt-BR" aria-current="page">PT</a>
+      <a href="en/" hreflang="en" lang="en">EN</a>
+      <a href="es/" hreflang="es" lang="es">ES</a>
+    </nav>
   </div>
 </header>
 
