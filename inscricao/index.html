@@ -408,7 +408,7 @@
             <textarea id="pix-codigo" class="pix-codigo" readonly rows="3" onfocus="this.select()"></textarea>
             <button type="button" class="btn" id="copiar-pix">Copiar código Pix (copia e cola)</button>
             <div class="ok" id="pix-ok" aria-live="polite"></div>
-            <p class="detalhe" style="margin:6px 0 0">Depois de pagar, responda o e-mail da inscrição com o comprovante.</p>
+            <p class="detalhe" id="pix-depois" style="margin:6px 0 0">Depois de pagar, responda o e-mail da inscrição com o comprovante.</p>
           </div>
           <div class="pagto" id="pagto-cartao">
             <div class="titulo"><span>Cartão de crédito</span><span class="valor" id="valor-cartao"></span></div>
@@ -450,8 +450,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
 <script>
 (function () {
-  // Endereço do Apps Script (Implantar > App da Web), o mesmo da página "Quero saber mais".
-  var ENDPOINT = 'https://script.google.com/macros/s/AKfycbzKKHorDmVlxB1MglaIDmLFtnRLLgjfSjtbGDet_Quy1dC0dzTIvN_JT8EvBx3QxINKlg/exec';
+  // A inscrição vai direto para o CRM (contrato, Mercado Pago, prazo de 24h e boas-vindas saem de lá).
+  var ENDPOINT = 'https://crm-vida-a-bordo.vercel.app/api/inscricao';
   var WHATSAPP = '5511978911538';
   var VERSAO_PADRAO = 4;   // usada só se a página do contrato não carregar
   var PIX = { chave: '60321788000160', nome: 'BARBARA KULAIF', cidade: 'SAO PAULO' };
@@ -721,7 +721,7 @@
   }
 
   // ---------- Tela final ----------
-  var valorPix = 0;
+  var valorPix = 0, pixMP = '';
   function telaFinal(r, d) {
     form.hidden = true; prog.hidden = true;
     $('final-titulo').textContent = 'Inscrição feita, ' + (r.primeiroNome || d.nome.split(' ')[0]) + '!';
@@ -738,9 +738,17 @@
       $('prazo-horas').textContent = (r.prazoHoras || 24) + ' horas';
       $('prazo').textContent = r.prazo || '';
       valorPix = Number(r.valorPixNumero) || 0;
+      pixMP = r.pixCopiaCola || '';
+      if (pixMP) {
+        // Pix do Mercado Pago, só desta inscrição: a confirmação é automática.
+        $('pix-chave').parentNode.innerHTML = 'Pix gerado só para você pelo <strong>Mercado Pago</strong>Confirmação automática: as boas-vindas chegam por e-mail.';
+        $('pix-depois').textContent = 'Não precisa mandar comprovante: assim que o Pix cair, você recebe o e-mail de boas-vindas.';
+      }
       $('valor-pix').textContent = r.valorPix || '';
-      $('pix-chave').textContent = r.pixChave || '60.321.788/0001-60';
-      $('pix-titular').textContent = 'Bárbara Kulaif';
+      if (!pixMP) {
+        $('pix-chave').textContent = r.pixChave || '60.321.788/0001-60';
+        $('pix-titular').textContent = 'Bárbara Kulaif';
+      }
       $('valor-cartao').textContent = r.valor || '';
       $('cartao-detalhe').textContent = 'Em até ' + (r.parcelas || 12) + 'x pelo Mercado Pago (+ juros), com confirmação automática.';
       if (r.linkPagamento) $('link-cartao').href = r.linkPagamento;
@@ -771,6 +779,7 @@
     return c.toString(16).toUpperCase().padStart(4, '0');
   }
   function codigoPix() {
+    if (pixMP) return pixMP;
     var p = campoPix('00', '01') + campoPix('26', campoPix('00', 'BR.GOV.BCB.PIX') + campoPix('01', PIX.chave)) +
       campoPix('52', '0000') + campoPix('53', '986') + (valorPix ? campoPix('54', valorPix.toFixed(2)) : '') +
       campoPix('58', 'BR') + campoPix('59', PIX.nome) + campoPix('60', PIX.cidade) + campoPix('62', campoPix('05', '***')) + '6304';
