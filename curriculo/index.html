@@ -121,6 +121,11 @@
   .opcoes label:has(input:focus-visible) { box-shadow: 0 0 0 3px rgba(0,130,160,.3); }
   .aceite { display: flex; gap: 10px; align-items: flex-start; font-size: 13px; color: var(--texto-suave); font-weight: 500; margin: 22px 0 20px; }
   .aceite input { margin-top: 3px; width: 18px; height: 18px; accent-color: var(--navy); flex: none; }
+  .foto-campo { display: flex; gap: 14px; align-items: center; border: 1.5px dashed #c9d1db; border-radius: 14px; padding: 12px; }
+  .foto-campo.invalido { border-color: #b42318; }
+  .foto-campo .previa { width: 84px; height: 84px; border-radius: 12px; background: #f3eee8 center/cover no-repeat; flex: none; display: flex; align-items: center; justify-content: center; font-size: 28px; }
+  .foto-campo input[type=file] { font-size: 14px; max-width: 100%; }
+  .foto-campo .dica { font-size: 12.5px; color: var(--texto-suave); margin: 4px 0 0; }
   .armadilha { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
   .msg-erro:empty { display: none; }
   .msg-erro { color: #b42318; font-size: 14px; font-weight: 600; margin: 12px 0 0; text-align: center; }
@@ -171,7 +176,7 @@
     <h2>Como funciona</h2>
     <ol class="passos">
       <li><div><b>Preenche o formulário abaixo</b><span>Em português mesmo: experiências, cursos, idiomas e o cargo que você quer.</span></div></li>
-      <li><div><b>Paga R$ 197 no Pix e manda a foto</b><span>O comprovante, a sua foto e os certificados vão pelo WhatsApp.</span></div></li>
+      <li><div><b>Manda a sua foto e paga R$ 197 no Pix</b><span>A foto vai aqui no formulário. Quando o Pix cair, você recebe a confirmação por e-mail e WhatsApp, sem precisar mandar comprovante.</span></div></li>
       <li><div><b>A equipe escreve e monta</b><span>Perfil, experiências reescritas com as palavras que Captains e Chief Stewardesses procuram, tudo em inglês.</span></div></li>
       <li><div><b>Você recebe o CV pronto</b><span>Em PDF e em arquivo editável, em até 3 dias úteis depois do Pix e da foto, com uma rodada de ajustes.</span></div></li>
     </ol>
@@ -281,10 +286,20 @@
       <div class="campo"><label for="referencias">Referências</label><textarea id="referencias" name="referencias" rows="3" placeholder="Até 3 pessoas: nome, cargo, empresa e contato (telefone ou e-mail)"></textarea></div>
       <div class="campo"><label for="obs">Algo mais que a equipe deva saber?</label><textarea id="obs" name="obs" rows="2"></textarea></div>
 
+      <div class="campo">
+        <label for="foto">Sua foto para o CV</label>
+        <div class="foto-campo" id="foto-campo">
+          <div class="previa" id="foto-previa" aria-hidden="true">📷</div>
+          <div>
+            <input type="file" id="foto" accept="image/*">
+            <p class="dica">De rosto, fundo claro, sorrindo, de uniforme ou roupa neutra. Pode ser do celular.</p>
+          </div>
+        </div>
+      </div>
       <div class="armadilha" aria-hidden="true"><label for="site">Não preencha</label><input type="text" id="site" name="site" tabindex="-1" autocomplete="off"></div>
       <label class="aceite">
         <input type="checkbox" id="aceite">
-        <span>Entendi que o prazo de 3 dias úteis começa depois do Pix e do envio da foto, que tenho uma rodada de ajustes e autorizo a equipe Vida a Bordo de Yachts a me chamar no WhatsApp e por e-mail.</span>
+        <span>Entendi que o prazo de 3 dias úteis começa depois do Pix e da foto, que tenho uma rodada de ajustes e autorizo a equipe Vida a Bordo de Yachts a me chamar no WhatsApp e por e-mail.</span>
       </label>
       <button class="btn btn-navy" type="submit" id="enviar">Enviar e ir para o pagamento</button>
       <p class="msg-erro" id="erro" role="alert"></p>
@@ -292,13 +307,13 @@
 
     <div id="final" hidden>
       <h2 id="final-titulo">Pedido recebido!</h2>
-      <p class="intro">Agora é só pagar e mandar a sua foto. O prazo de 3 dias úteis começa quando os dois chegarem.</p>
+      <p class="intro" id="final-intro">Agora é só pagar. O prazo de 3 dias úteis começa quando o pagamento e a foto chegarem.</p>
       <div class="pagto">
         <div class="titulo"><span>Pix</span><span class="valor">R$ 197,00</span></div>
         <p class="detalhe">Abra o app do banco e escaneie o QR Code, ou use o Pix copia e cola abaixo.</p>
         <div class="pix-grade">
           <div class="qr" id="qr" role="img" aria-label="QR Code do Pix"></div>
-          <div class="chave">Chave Pix (e-mail)<strong>kulaifbarbara1@gmail.com</strong>Titular: Bárbara Kulaif</div>
+          <div class="chave" id="pix-chave">Chave Pix (e-mail)<strong>kulaifbarbara1@gmail.com</strong>Titular: Bárbara Kulaif</div>
         </div>
         <label for="pix-codigo" class="rotulo-pix">Pix copia e cola</label>
         <textarea id="pix-codigo" class="pix-codigo" readonly rows="3" onfocus="this.select()"></textarea>
@@ -307,10 +322,10 @@
       </div>
       <div class="pagto">
         <div class="titulo"><span>Depois de pagar</span></div>
-        <p class="detalhe">Mande no WhatsApp o comprovante, uma foto sua de rosto (fundo claro, sorrindo, de uniforme ou roupa neutra) e os certificados que tiver.</p>
+        <p class="detalhe" id="depois-texto">Mande no WhatsApp o comprovante, uma foto sua de rosto (fundo claro, sorrindo, de uniforme ou roupa neutra) e os certificados que tiver.</p>
         <a class="btn" id="link-envio" href="#" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1s-.5-.1-.7.1-.8 1-1 1.2-.4.2-.7.1a8.2 8.2 0 0 1-4-3.5c-.3-.5.3-.5.9-1.6.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6a1.1 1.1 0 0 0-.8.4 3.4 3.4 0 0 0-1 2.5 5.9 5.9 0 0 0 1.2 3.1 13.4 13.4 0 0 0 5.2 4.6c1.9.8 2.7.9 3.6.7a3.1 3.1 0 0 0 2-1.4 2.5 2.5 0 0 0 .2-1.4c-.1-.1-.3-.2-.7-.4zM12 21.8a9.8 9.8 0 0 1-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4A9.8 9.8 0 1 1 12 21.8zm8.4-18.2A11.8 11.8 0 0 0 1.8 17.8L.1 24l6.3-1.7A11.8 11.8 0 0 0 12 23.7 11.8 11.8 0 0 0 20.4 3.6z"/></svg>
-          Enviar comprovante e foto
+          <span id="depois-botao">Enviar comprovante e foto</span>
         </a>
       </div>
       <p class="nota">Prefere pagar no cartão? <a id="link-cartao" href="#" target="_blank" rel="noopener">Chame a gente no WhatsApp</a>.</p>
@@ -328,7 +343,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
 <script>
 (function () {
-  // Mesmo Apps Script da inscrição: com tipo 'curriculo' o pedido vai para a aba "Currículos" da planilha.
+  // Pedido vai para o CRM (Vendas → Pedidos de Currículo), com a foto e o Pix do Mercado Pago.
   var ENDPOINT = 'https://crm-vida-a-bordo.vercel.app/api/site';
   var WHATSAPP = '5511978911538';
   var PIX = { chave: 'kulaifbarbara1@gmail.com', nome: 'BARBARA KULAIF', cidade: 'SAO PAULO', valor: 197 };
@@ -348,6 +363,28 @@
     else if (n.length > 2) e.target.value = '(' + n.slice(0, 2) + ') ' + n.slice(2);
   });
   form.addEventListener('input', function (e) { e.target.classList.remove('invalido'); });
+
+  // Foto: reduz no navegador (até 900 px, JPEG) para o envio ser leve até em 4G.
+  var fotoDados = '';
+  $('foto').addEventListener('change', function (e) {
+    var arquivo = e.target.files && e.target.files[0];
+    fotoDados = '';
+    $('foto-campo').classList.remove('invalido');
+    if (!arquivo) return;
+    var img = new Image();
+    img.onload = function () {
+      var lado = 900, w = img.width, h = img.height, k = Math.min(1, lado / Math.max(w, h));
+      var c = document.createElement('canvas');
+      c.width = Math.round(w * k); c.height = Math.round(h * k);
+      c.getContext('2d').drawImage(img, 0, 0, c.width, c.height);
+      fotoDados = c.toDataURL('image/jpeg', 0.82);
+      $('foto-previa').style.backgroundImage = 'url(' + fotoDados + ')';
+      $('foto-previa').textContent = '';
+      URL.revokeObjectURL(img.src);
+    };
+    img.onerror = function () { erro.textContent = 'Não consegui abrir essa foto. Tente outra (JPG ou PNG).'; };
+    img.src = URL.createObjectURL(arquivo);
+  });
   form.addEventListener('change', function (e) {
     var g = e.target.closest('[data-grupo]');
     if (g) g.classList.remove('invalido');
@@ -372,6 +409,7 @@
     if (!d.ingles) return falhar(grupo('ingles'), 'Marque o seu nível de inglês.');
     if (!d.passaporte) return falhar(grupo('passaporte'), 'Responda se você tem passaporte válido.');
     if (!d.tatuagem) return falhar(grupo('tatuagem'), 'Responda sobre tatuagem visível.');
+    if (!fotoDados) return falhar($('foto-campo'), 'Escolha a sua foto de rosto para o CV.');
     if (!$('aceite').checked) return falhar($('aceite'), 'Marque a caixa de confirmação para continuar.');
     return true;
   }
@@ -385,13 +423,19 @@
     if (d.site) return;   // robô
     botao.disabled = true;
     botao.textContent = 'Enviando...';
+    // O CRM devolve o Pix do Mercado Pago (que confirma o pagamento sozinho). Sem ele, fica a chave Pix de antes.
     fetch(ENDPOINT, {
-      method: 'POST', mode: 'no-cors',
+      method: 'POST',
       headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-      body: JSON.stringify(Object.assign({}, d, { tipo: 'curriculo', material: 'Criação de Currículo', origem: origem, pagina: location.href }))
-    }).then(function () {
+      body: JSON.stringify(Object.assign({}, d, { tipo: 'curriculo', material: 'Criação de Currículo', origem: origem, pagina: location.href, foto: fotoDados }))
+    }).then(function (r) {
+      return r.json().catch(function () { return {}; }).then(function (j) {
+        if (!r.ok && !j.pix) throw new Error(j.erro || r.status);
+        return j;
+      });
+    }).then(function (r) {
       if (window.fbq) fbq('track', 'Lead', { content_name: 'Criação de Currículo' });
-      telaFinal(d);
+      telaFinal(d, r.pix || null);
     }).catch(function () {
       erro.innerHTML = 'Não conseguimos enviar agora. Confira a internet e tente de novo, ou <a href="' +
         linkWhats('Olá! Quero fazer o pedido da Criação de Currículo. Meu nome é ' + d.nome + '.') + '">fale com a gente no WhatsApp</a>.';
@@ -400,14 +444,27 @@
     });
   });
 
-  function telaFinal(d) {
+  var codigoFinal = '';
+  function telaFinal(d, pixMP) {
     form.hidden = true;
     $('final-titulo').textContent = 'Pedido recebido, ' + d.nome.split(' ')[0] + '!';
-    $('link-envio').href = linkWhats('Olá! Fiz o pedido da Criação de Currículo (modelo ' + d.modelo + '). Meu nome é ' + d.nome + '. Segue o comprovante do Pix, a minha foto e os certificados.');
+    codigoFinal = pixMP ? pixMP.copiaCola : codigoPix();
+    if (pixMP) {
+      // Pix do Mercado Pago: confirma sozinho, não precisa de comprovante.
+      $('final-intro').textContent = 'A sua foto chegou! Agora é só pagar: quando o Pix cair, você recebe a confirmação por e-mail e WhatsApp. O prazo de 3 dias úteis começa aí.';
+      $('pix-chave').innerHTML = 'Pix pelo <strong>Mercado Pago</strong>Confirmação automática, sem comprovante.';
+      $('depois-texto').textContent = 'Tem certificados (STCW, ENG1, cursos)? Mande no WhatsApp que a equipe coloca no seu CV.';
+      $('depois-botao').textContent = 'Enviar certificados';
+      $('link-envio').href = linkWhats('Olá! Fiz o pedido da Criação de Currículo (modelo ' + d.modelo + '). Meu nome é ' + d.nome + '. Seguem os meus certificados.');
+    } else {
+      $('link-envio').href = linkWhats('Olá! Fiz o pedido da Criação de Currículo (modelo ' + d.modelo + '). Meu nome é ' + d.nome + '. Segue o comprovante do Pix e os certificados.');
+      $('depois-texto').textContent = 'Mande no WhatsApp o comprovante do Pix e os certificados que tiver.';
+      $('depois-botao').textContent = 'Enviar comprovante';
+    }
     $('link-cartao').href = linkWhats('Olá! Fiz o pedido da Criação de Currículo e quero pagar no cartão. Meu nome é ' + d.nome + '.');
-    $('pix-codigo').value = codigoPix();
+    $('pix-codigo').value = codigoFinal;
     if (window.qrcode) {
-      var q = qrcode(0, 'M'); q.addData(codigoPix()); q.make();
+      var q = qrcode(0, 'M'); q.addData(codigoFinal); q.make();
       $('qr').innerHTML = q.createSvgTag({ cellSize: 4, margin: 0, scalable: true });
     } else $('qr').hidden = true;
     $('final').hidden = false;
@@ -431,7 +488,7 @@
     return p + crc16(p);
   }
   $('copiar-pix').addEventListener('click', function () {
-    var codigo = codigoPix(), ok = $('pix-ok');
+    var codigo = codigoFinal || codigoPix(), ok = $('pix-ok');
     function feito() { ok.textContent = 'Código copiado! No app do banco, use Pix > Copia e Cola.'; }
     if (navigator.clipboard) navigator.clipboard.writeText(codigo).then(feito).catch(function () { window.prompt('Copie o código Pix:', codigo); });
     else window.prompt('Copie o código Pix:', codigo);
