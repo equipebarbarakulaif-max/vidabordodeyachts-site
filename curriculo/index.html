@@ -8,7 +8,7 @@
 <meta name="theme-color" content="#002445">
 <meta property="og:title" content="Criação de Currículo para Yachts · Vida a Bordo de Yachts">
 <meta property="og:description" content="O seu CV pronto, em inglês e no padrão dos Yachts de Luxo, em até 3 dias úteis.">
-<meta property="og:image" content="https://vidabordodeyachts.com.br/img/cv/modelo-cv-1-oceano.jpg">
+<meta property="og:image" content="https://vidabordodeyachts.com.br/img/cv/modelo-cv-azul.jpg">
 <meta property="og:type" content="website">
 <link rel="icon" type="image/png" href="../img/simbolo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -152,7 +152,7 @@
 
   @media (min-width: 700px) {
     .cartao { padding: 38px 40px 34px; }
-    .modelos { grid-template-columns: repeat(4, 1fr); }
+    .modelos { grid-template-columns: repeat(3, 1fr); }
     .duas { display: grid; grid-template-columns: 1fr 1fr; gap: 0 16px; }
   }
 </style>
@@ -197,10 +197,9 @@
   <section class="cartao">
     <h2>Escolha o modelo</h2>
     <div class="modelos">
-      <figure><img src="../img/cv/modelo-cv-1-oceano.jpg" alt="Modelo de CV Oceano" width="495" height="700" loading="lazy"><figcaption>Oceano</figcaption></figure>
-      <figure><img src="../img/cv/modelo-cv-2-classico-cinza.jpg" alt="Modelo de CV Clássico Cinza" width="495" height="700" loading="lazy"><figcaption>Clássico Cinza</figcaption></figure>
-      <figure><img src="../img/cv/modelo-cv-3-areia.jpg" alt="Modelo de CV Areia" width="495" height="700" loading="lazy"><figcaption>Areia</figcaption></figure>
-      <figure><img src="../img/cv/modelo-cv-4-azul-marinho.jpg" alt="Modelo de CV Azul-Marinho" width="495" height="700" loading="lazy"><figcaption>Azul-Marinho</figcaption></figure>
+      <figure><img src="../img/cv/modelo-cv-azul.jpg" alt="Modelo de CV Azul" width="495" height="700" loading="lazy"><figcaption>Azul</figcaption></figure>
+      <figure><img src="../img/cv/modelo-cv-dourado.jpg" alt="Modelo de CV Dourado" width="495" height="700" loading="lazy"><figcaption>Dourado</figcaption></figure>
+      <figure><img src="../img/cv/modelo-cv-marinho.jpg" alt="Modelo de CV Marinho" width="495" height="700" loading="lazy"><figcaption>Marinho</figcaption></figure>
     </div>
     <p class="nota">A equipe não inventa experiências nem certificados: tudo no CV vem das suas respostas.</p>
   </section>
@@ -208,7 +207,7 @@
   <section class="cartao" id="pedido">
     <form id="form" novalidate>
       <h2>Faça o seu pedido</h2>
-      <p class="intro">Leva uns 10 minutos. Pode escrever em português: a tradução é com a gente. Quanto mais detalhes, melhor fica o CV.</p>
+      <p class="intro">Pode escrever em português: a tradução é com a gente. Reserve um tempo com calma, principalmente para as experiências: quanto mais detalhes você contar, melhor fica o CV.</p>
 
       <h3>Seus dados</h3>
       <div class="campo"><label for="nome">Nome completo</label><input type="text" id="nome" name="nome" autocomplete="name" required></div>
@@ -237,17 +236,16 @@
       <div class="campo">
         <span class="rotulo" id="r-modelo">Modelo</span>
         <div class="opcoes" role="radiogroup" aria-labelledby="r-modelo" data-grupo="modelo">
-          <label><input type="radio" name="modelo" value="Oceano"><span>Oceano</span></label>
-          <label><input type="radio" name="modelo" value="Clássico Cinza"><span>Clássico Cinza</span></label>
-          <label><input type="radio" name="modelo" value="Areia"><span>Areia</span></label>
-          <label><input type="radio" name="modelo" value="Azul-Marinho"><span>Azul-Marinho</span></label>
+          <label><input type="radio" name="modelo" value="Azul"><span>Azul</span></label>
+          <label><input type="radio" name="modelo" value="Dourado"><span>Dourado</span></label>
+          <label><input type="radio" name="modelo" value="Marinho"><span>Marinho</span></label>
         </div>
       </div>
 
       <h3>Experiências</h3>
-      <p class="dica"><b>Quanto melhor você descrever, mais completo fica o seu currículo.</b> Não economize experiências: coloque todas. Para cada uma, escreva o início e o término (mês e ano), o nome da vaga e o que você fazia.</p>
-      <div class="campo"><label for="exp_yacht">Experiência em Yachts ou cruzeiros <span class="opcional">(se tiver)</span></label><textarea id="exp_yacht" name="exp_yacht" rows="5" placeholder="Ex.: M/Y Nome do Yacht (45m) ou navio de cruzeiro · Junior Stewardess · 03/2024 a 10/2024 · arrumação das cabines, serviço de mesa, lavanderia"></textarea></div>
-      <div class="campo"><label for="exp_outras">Outras experiências de trabalho</label><textarea id="exp_outras" name="exp_outras" rows="7" placeholder="Ex.: Hotel Tal, São Paulo · Recepcionista · 01/2022 a 12/2023 · check-in e check-out, atendimento a hóspedes estrangeiros, reservas" required></textarea></div>
+      <p class="dica"><b>Esta é a parte mais importante do pedido.</b> Escreva sobre cada experiência como se fosse uma redação: conte, com o máximo de detalhes, tudo o que você fazia no dia a dia, até as coisas que parecem banais ou sem importância. É justamente com esses detalhes que a gente consegue montar um currículo forte para os Yachts. Coloque todas as experiências, com o início e o término (mês e ano), o nome do lugar, a cidade e o cargo.</p>
+      <div class="campo"><label for="exp_yacht">Experiência em Yachts ou cruzeiros <span class="opcional">(se tiver)</span></label><textarea id="exp_yacht" name="exp_yacht" rows="9" placeholder="Ex.: Navio de cruzeiro MSC Tal · Junior Stewardess · 03/2024 a 10/2024. Eu trabalhava no restaurante principal, que atendia cerca de 800 hóspedes por noite. Recebia e acomodava os hóspedes, montava e desmontava as mesas, servia vinhos e bebidas, ajudava no buffet do café da manhã, cuidava dos pedidos especiais (alergias, aniversários), dobrava guardanapos, polia talheres e taças, treinei duas pessoas novas da equipe..."></textarea></div>
+      <div class="campo"><label for="exp_outras">Outras experiências de trabalho</label><textarea id="exp_outras" name="exp_outras" rows="11" placeholder="Ex.: Hotel Tal, São Paulo · Recepcionista · 01/2022 a 12/2023. Hotel 5 estrelas com muitos hóspedes estrangeiros. Eu fazia check-in e check-out, atendia em inglês e espanhol, cuidava das reservas e dos pedidos especiais dos hóspedes (transfer, restaurantes, passeios), resolvia reclamações, organizava a recepção, ajudava a governança quando faltava gente, fechava o caixa do turno..." required></textarea></div>
 
       <h3>Cursos e idiomas</h3>
       <div class="campo"><label for="cursos">Cursos e certificados <span class="opcional">(com datas)</span></label><textarea id="cursos" name="cursos" rows="3" placeholder="Ex.: STCW (05/2026), ENG1 (06/2026), Food Hygiene, curso de barista"></textarea></div>
@@ -405,7 +403,7 @@
     if (!/^\S+@\S+\.\S+$/.test(d.email)) return falhar($('email'), 'Confira o seu e-mail.');
     if (!d.cargo) return falhar(grupo('cargo'), 'Escolha o cargo que você quer.');
     if (!d.modelo) return falhar(grupo('modelo'), 'Escolha o modelo do CV.');
-    if (d.exp_outras.length < 20) return falhar($('exp_outras'), 'Conte as suas experiências de trabalho, com empresa, cargo e período.');
+    if (d.exp_outras.length < 150) return falhar($('exp_outras'), 'Conte com mais detalhes as suas experiências: empresa, cargo, período e tudo o que você fazia no dia a dia.');
     if (!d.ingles) return falhar(grupo('ingles'), 'Marque o seu nível de inglês.');
     if (!d.passaporte) return falhar(grupo('passaporte'), 'Responda se você tem passaporte válido.');
     if (!d.tatuagem) return falhar(grupo('tatuagem'), 'Responda sobre tatuagem visível.');
