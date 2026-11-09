@@ -311,7 +311,7 @@
         <p class="detalhe">Abra o app do banco e escaneie o QR Code, ou use o Pix copia e cola abaixo.</p>
         <div class="pix-grade">
           <div class="qr" id="qr" role="img" aria-label="QR Code do Pix"></div>
-          <div class="chave" id="pix-chave">Chave Pix (e-mail)<strong>kulaifbarbara1@gmail.com</strong>Titular: Bárbara Kulaif</div>
+          <div class="chave" id="pix-chave">Chave Pix (CNPJ)<strong>60.321.788/0001-60</strong>Titular: Bárbara Kulaif</div>
         </div>
         <label for="pix-codigo" class="rotulo-pix">Pix copia e cola</label>
         <textarea id="pix-codigo" class="pix-codigo" readonly rows="3" onfocus="this.select()"></textarea>
@@ -344,7 +344,7 @@
   // Pedido vai para o CRM (Vendas → Pedidos de Currículo), com a foto e o Pix do Mercado Pago.
   var ENDPOINT = 'https://crm-vida-a-bordo.vercel.app/api/site';
   var WHATSAPP = '5511978911538';
-  var PIX = { chave: 'kulaifbarbara1@gmail.com', nome: 'BARBARA KULAIF', cidade: 'SAO PAULO', valor: 197 };
+  var PIX = { chave: '60321788000160', nome: 'BARBARA KULAIF', cidade: 'SAO PAULO', valor: 197 };
   var form = document.getElementById('form');
   var erro = document.getElementById('erro');
   var botao = document.getElementById('enviar');
