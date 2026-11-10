@@ -166,7 +166,7 @@
     <span class="sobrelinha">Criação de Currículo</span>
     <h1>O seu CV pronto para <em>Yachts</em></h1>
     <p>Você responde a um formulário e a nossa equipe escreve e monta o seu currículo em inglês, no padrão que os Yachts de Luxo pedem.</p>
-    <span class="selo">R$ 197 · entrega em até 3 dias úteis</span>
+    <span class="selo" id="selo-preco">R$ 197 · entrega em até 3 dias úteis</span>
     <a class="btn btn-claro" href="#pedido">Fazer o meu pedido</a>
   </div>
 </header>
@@ -176,7 +176,7 @@
     <h2>Como funciona</h2>
     <ol class="passos">
       <li><div><b>Preenche o formulário abaixo</b><span>Em português mesmo: experiências, cursos, idiomas e o cargo que você quer.</span></div></li>
-      <li><div><b>Manda a sua foto e paga R$ 197 no Pix</b><span>A foto vai aqui no formulário. Quando o Pix cair, você recebe a confirmação por e-mail e WhatsApp, sem precisar mandar comprovante.</span></div></li>
+      <li><div><b id="passo-preco">Manda a sua foto e paga R$ 197 no Pix</b><span>A foto vai aqui no formulário. Quando o Pix cair, você recebe a confirmação por e-mail e WhatsApp, sem precisar mandar comprovante.</span></div></li>
       <li><div><b>A equipe escreve e monta</b><span>Perfil, experiências reescritas com as palavras que Captains e Chief Stewardesses procuram, tudo em inglês.</span></div></li>
       <li><div><b>Você recebe o CV pronto</b><span>Em PDF e em arquivo editável, em até 3 dias úteis depois do Pix e da foto, com uma rodada de ajustes.</span></div></li>
     </ol>
@@ -307,7 +307,7 @@
       <h2 id="final-titulo">Pedido recebido!</h2>
       <p class="intro" id="final-intro">Agora é só pagar. O prazo de 3 dias úteis começa quando o pagamento e a foto chegarem.</p>
       <div class="pagto">
-        <div class="titulo"><span>Pix</span><span class="valor">R$ 197,00</span></div>
+        <div class="titulo"><span>Pix</span><span class="valor" id="valor-pix">R$ 197,00</span></div>
         <p class="detalhe">Abra o app do banco e escaneie o QR Code, ou use o Pix copia e cola abaixo.</p>
         <div class="pix-grade">
           <div class="qr" id="qr" role="img" aria-label="QR Code do Pix"></div>
@@ -350,6 +350,14 @@
   var botao = document.getElementById('enviar');
   var params = new URLSearchParams(location.search);
   var origem = params.get('origem') || params.get('utm_source') || 'Site';
+  // Link de aluno da mentoria (vem do Material de Apoio): R$ 129, Pix direto na chave do CNPJ.
+  var ALUNO = params.get('aluno') === '1';
+  if (ALUNO) {
+    PIX.valor = 129;
+    $('selo-preco').textContent = 'Aluno da mentoria: R$ 129 · entrega em até 3 dias úteis';
+    $('passo-preco').textContent = 'Manda a sua foto e paga R$ 129 no Pix (valor de aluno)';
+    $('valor-pix').textContent = 'R$ 129,00';
+  }
 
   function $(id) { return document.getElementById(id); }
   function linkWhats(texto) { return 'https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(texto); }
@@ -425,7 +433,7 @@
     fetch(ENDPOINT, {
       method: 'POST',
       headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-      body: JSON.stringify(Object.assign({}, d, { tipo: 'curriculo', material: 'Criação de Currículo', origem: origem, pagina: location.href, foto: fotoDados }))
+      body: JSON.stringify(Object.assign({}, d, { tipo: 'curriculo', material: 'Criação de Currículo', origem: ALUNO ? 'Material de Apoio (aluno)' : origem, aluno: ALUNO ? '1' : '', pagina: location.href, foto: fotoDados }))
     }).then(function (r) {
       return r.json().catch(function () { return {}; }).then(function (j) {
         if (!r.ok && !j.pix) throw new Error(j.erro || r.status);
@@ -459,7 +467,7 @@
       $('depois-texto').textContent = 'Mande no WhatsApp o comprovante do Pix e os certificados que tiver.';
       $('depois-botao').textContent = 'Enviar comprovante';
     }
-    $('link-cartao').href = linkWhats('Olá! Fiz o pedido da Criação de Currículo e quero pagar no cartão. Meu nome é ' + d.nome + '.');
+    $('link-cartao').href = linkWhats('Olá! Fiz o pedido da Criação de Currículo' + (ALUNO ? ' (valor de aluno, R$ 129)' : '') + ' e quero pagar no cartão. Meu nome é ' + d.nome + '.');
     $('pix-codigo').value = codigoFinal;
     if (window.qrcode) {
       var q = qrcode(0, 'M'); q.addData(codigoFinal); q.make();
