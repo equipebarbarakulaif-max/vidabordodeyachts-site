@@ -225,6 +225,9 @@
   .cartao.destaque .preco .pix b { color: var(--areia); }
   .preco .total { margin-top: 10px; font-size: 13px; color: var(--texto-suave); }
   .comp .btn { margin-top: 20px; justify-content: center; }
+  .btn-inscricao { background: var(--areia); color: var(--navy); box-shadow: 0 8px 22px rgba(186,162,140,.35); }
+  .btn-inscricao:hover { background: #a98f77; }
+  .comp .btn-inscricao + .btn { margin-top: 10px; }
   @media (max-width: 860px) { .comp { grid-template-columns: 1fr; } }
   .nos-dois { margin-top: 26px; text-align: center; color: var(--texto-suave); font-size: 15px; max-width: 760px; margin-inline: auto; }
   .nos-dois b { color: var(--navy); }
@@ -306,6 +309,9 @@
   .final h2 { max-width: 760px; margin: 0 auto; }
   .final .intro { margin-inline: auto; }
   .final .btn { margin-top: 32px; }
+  .final .duvida { margin-top: 44px; padding-top: 30px; border-top: 1px solid rgba(0,36,69,.12); }
+  .final .duvida p { margin: 0 auto; max-width: 560px; color: var(--texto-suave); font-size: 16px; }
+  .final .duvida .btn { margin-top: 16px; }
 
   /* Rodapé */
   .rodape { background: var(--gelo); padding-block: 48px 36px; font-size: 14px; color: var(--texto-suave); }
@@ -448,6 +454,7 @@
             <li><span>Material de Apoio e descontos</span><b>✓</b></li>
           </ul>
           <div class="preco"><div class="parc-topo">em até</div><div class="valor">12x de R$ 95,83<small>no cartão + juros</small></div><div class="pix"><b>R$ 1.092,50 no Pix</b> · 5% de desconto</div><div class="total">Valor total: R$ 1.150 · ou US$ 225 / € 200 pela Wise</div><div class="garantia">✓ 7 dias de garantia: desistiu, devolvemos 100%</div></div>
+          <a class="btn btn-inscricao" href="../inscricao/?formato=individual">Fazer minha inscrição aqui →</a>
           <a class="btn btn-wpp js-wpp" data-msg="Olá! Quero fazer a Mentoria Individual. 🛥️" href="#"><svg><use href="#i-wpp"/></svg>Quero a individual</a>
         </article>
         <article class="cartao">
@@ -463,6 +470,7 @@
             <li><span>Material de Apoio e descontos</span><b>✓</b></li>
           </ul>
           <div class="preco"><div class="parc-topo">em até</div><div class="valor">12x de R$ 66,67<small>no cartão + juros</small></div><div class="pix"><b>R$ 760 no Pix</b> · 5% de desconto</div><div class="total">Valor total: R$ 800 · ou US$ 160 / € 140 pela Wise</div><div class="garantia">✓ 7 dias de garantia: desistiu, devolvemos 100%</div></div>
+          <a class="btn btn-inscricao" href="../inscricao/?formato=grupo">Fazer minha inscrição aqui →</a>
           <a class="btn btn-wpp js-wpp" data-msg="Olá! Quero fazer a Mentoria em Grupo. 🛥️" href="#"><svg><use href="#i-wpp"/></svg>Quero a mentoria em grupo</a>
         </article>
       </div>
@@ -551,11 +559,15 @@
   <section class="final secao">
     <div class="wrap">
       <span class="passo-num">Próximo passo</span>
-      <h2>É só escolher o formato e nos avisar</h2>
-      <p class="intro">Toque no formato que você quer. A conversa abre no WhatsApp e a gente te envia a inscrição.</p>
+      <h2>É só escolher o formato e fazer a sua inscrição</h2>
+      <p class="intro">Toque no formato que você quer e faça a inscrição na hora, direto pelo site.</p>
       <div class="escolha">
-        <a class="btn btn-wpp js-wpp" data-msg="Olá! Quero fazer a Mentoria Individual. 🛥️" href="#"><svg><use href="#i-wpp"/></svg>Quero a mentoria individual</a>
-        <a class="btn btn-wpp js-wpp" data-msg="Olá! Quero fazer a Mentoria em Grupo. 🛥️" href="#"><svg><use href="#i-wpp"/></svg>Quero a mentoria em grupo</a>
+        <a class="btn btn-inscricao" href="../inscricao/?formato=individual">Inscrição na mentoria individual →</a>
+        <a class="btn btn-inscricao" href="../inscricao/?formato=grupo">Inscrição na mentoria em grupo →</a>
+      </div>
+      <div class="duvida">
+        <p>Ficou alguma dúvida sobre a mentoria? Entre em contato com a gente que a gente te ajuda.</p>
+        <a class="btn btn-wpp js-wpp" data-msg="Olá! Vi a apresentação da mentoria e tenho uma dúvida. 🛥️" href="#"><svg><use href="#i-wpp"/></svg>Tirar minha dúvida no WhatsApp</a>
       </div>
     </div>
   </section>
