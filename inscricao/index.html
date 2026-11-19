@@ -216,7 +216,7 @@
         <button type="button" class="link-btn" id="trocar-doc">Não tenho CPF (vou informar o passaporte)</button>
         <label for="nascimento">Data de nascimento</label>
         <input type="date" id="nascimento" name="nascimento" required min="1920-01-01">
-        <span class="rotulo" id="r-genero">Gênero</span>
+        <span class="rotulo" id="r-genero">Gênero <span class="opcional">(opcional)</span></span>
         <div class="opcoes" role="radiogroup" aria-labelledby="r-genero" data-grupo="genero">
           <label><input type="radio" name="genero" value="Feminino"><span>Feminino</span></label>
           <label><input type="radio" name="genero" value="Masculino"><span>Masculino</span></label>
@@ -444,7 +444,7 @@
 </main>
 
 <footer class="rodape">
-  <a href="../">vidabordodeyachts.com.br</a> · <a href="../contrato/">Contrato</a> · <a href="../privacidade/">Privacidade</a> · @vidabordodeyachts
+  <a href="../">vidabordodeyachts.com.br</a> · <a href="../contrato/">Contrato</a> · <a href="../privacidade/">Privacidade</a> · @vidabordodeyachts<br>Bárbara Kulaif Aboud · CNPJ 60.321.788/0001-60 · <a href="mailto:contato@vidabordodeyachts.com.br">contato@vidabordodeyachts.com.br</a>
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
@@ -574,7 +574,6 @@
       if (passaporte ? !/^[A-Za-z0-9.\- ]{5,20}$/.test(texto('cpf')) : !cpfOk(cpf.value)) return falhar(cpf, passaporte ? 'Confira o número do passaporte.' : 'Esse CPF não parece certo. Confira os números.');
       var n = $('nascimento').value, ano = Number(n.slice(0, 4));
       if (!n || ano < 1920 || ano > hoje.getFullYear() - 14) return falhar($('nascimento'), 'Confira a sua data de nascimento.');
-      if (!valor('genero')) return falhar(grupo('genero'), 'Escolha uma opção de gênero.');
       if (valor('genero') === '__outro' && !texto('genero-outro')) return falhar($('genero-outro'), 'Escreva como você se identifica.');
     }
     if (i === 1) {

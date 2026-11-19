@@ -1,21 +1,28 @@
 // Meta Pixel (Pixel de Bárbara Kulaif) + evento "Contact" em todo clique para o WhatsApp
-// + aviso de cookies: quem recusar não é mais medido (escolha salva no navegador, chave "cookies-vab").
-!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
-n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
-document,'script','https://connect.facebook.net/en_US/fbevents.js');
-
+// + aviso de cookies. O Pixel só é carregado DEPOIS que a pessoa clica em "Aceitar"
+// (consentimento prévio, LGPD). Escolha salva no navegador, chave "cookies-vab".
 (function () {
   var CHAVE = 'cookies-vab';
   function ler() { try { return localStorage.getItem(CHAVE); } catch (e) { return null; } }
   function salvar(v) { try { localStorage.setItem(CHAVE, v); } catch (e) {} }
 
-  if (ler() === 'recusado') fbq('consent', 'revoke');
-  fbq('init', '373479003522225');
-  fbq('track', 'PageView');
+  var carregado = false;
+  function carregarPixel() {
+    if (carregado) { fbq('consent', 'grant'); return; }
+    carregado = true;
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+    document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '373479003522225');
+    fbq('track', 'PageView');
+  }
+
+  if (ler() === 'aceito') carregarPixel();
 
   document.addEventListener('click', function (ev) {
+    if (!carregado || ler() !== 'aceito') return;
     var a = ev.target.closest && ev.target.closest('a[href]');
     if (a && /(wa\.me|api\.whatsapp\.com|whatsapp:)/i.test(a.href)) {
       fbq('track', 'Contact', { content_name: 'WhatsApp', pagina: location.pathname });
@@ -25,7 +32,8 @@ document,'script','https://connect.facebook.net/en_US/fbevents.js');
   window.cookiesVab = {
     escolher: function (v) {
       salvar(v);
-      fbq('consent', v === 'recusado' ? 'revoke' : 'grant');
+      if (v === 'aceito') carregarPixel();
+      else if (carregado) fbq('consent', 'revoke');
       var aviso = document.getElementById('aviso-cookies');
       if (aviso) aviso.remove();
     }
@@ -52,9 +60,9 @@ document,'script','https://connect.facebook.net/en_US/fbevents.js');
     aviso.setAttribute('role', 'region');
     aviso.setAttribute('aria-label', 'Aviso de cookies');
     aviso.innerHTML =
-      '<p>Usamos cookies para medir as visitas e mostrar anúncios da Vida a Bordo a quem já conhece o site. ' +
+      '<p>Podemos usar cookies para medir as visitas e mostrar anúncios da Vida a Bordo a quem já conhece o site? Eles só são ativados se você aceitar. ' +
       '<a href="/privacidade/#cookies">Saiba mais</a></p>' +
-      '<div class="acoes"><button type="button" class="nao">Recusar</button><button type="button" class="ok">Ok</button></div>';
+      '<div class="acoes"><button type="button" class="nao">Recusar</button><button type="button" class="ok">Aceitar</button></div>';
     aviso.querySelector('.ok').onclick = function () { window.cookiesVab.escolher('aceito'); };
     aviso.querySelector('.nao').onclick = function () { window.cookiesVab.escolher('recusado'); };
     document.body.appendChild(aviso);

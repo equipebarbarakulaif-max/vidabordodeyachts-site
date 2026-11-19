@@ -107,8 +107,8 @@
 
   <h2 id="cookies">Cookies</h2>
   <p>Cookies são pequenos arquivos que o site guarda no seu navegador. Usamos o <b>Meta Pixel</b>, da Meta, para saber quantas pessoas visitam o site, quantas clicam no WhatsApp ou pedem o Modelo de CV, e para mostrar anúncios da Vida a Bordo de Yachts a quem já visitou o site. O site funciona normalmente sem esses cookies.</p>
-  <p>Você pode recusar a qualquer momento por aqui. A escolha fica salva neste navegador.</p>
-  <button class="btn" id="trocar" type="button">Recusar cookies de anúncios</button>
+  <p>Esses cookies só são ativados depois que você clica em <b>Aceitar</b> no aviso do site. Você pode mudar de ideia a qualquer momento por aqui. A escolha fica salva neste navegador.</p>
+  <button class="btn" id="trocar" type="button">Aceitar cookies de anúncios</button>
   <p id="estado" aria-live="polite"></p>
 
   <h2>Por quanto tempo guardamos</h2>
@@ -119,7 +119,7 @@
 </main>
 
 <footer class="rodape">
-  <a href="../">vidabordodeyachts.com.br</a> · @vidabordodeyachts
+  <a href="../">vidabordodeyachts.com.br</a> · @vidabordodeyachts<br>Bárbara Kulaif Aboud · CNPJ 60.321.788/0001-60 · <a href="mailto:contato@vidabordodeyachts.com.br">contato@vidabordodeyachts.com.br</a>
 </footer>
 
 <script>
@@ -128,12 +128,12 @@
     var estado = document.getElementById('estado');
     function ler() { try { return localStorage.getItem('cookies-vab'); } catch (e) { return null; } }
     function pintar() {
-      var recusado = ler() === 'recusado';
-      botao.textContent = recusado ? 'Aceitar cookies de anúncios' : 'Recusar cookies de anúncios';
-      estado.textContent = recusado ? 'Hoje: cookies de anúncios recusados neste navegador.' : 'Hoje: cookies de anúncios ativos neste navegador.';
+      var aceito = ler() === 'aceito';
+      botao.textContent = aceito ? 'Recusar cookies de anúncios' : 'Aceitar cookies de anúncios';
+      estado.textContent = aceito ? 'Hoje: cookies de anúncios ativos neste navegador.' : 'Hoje: cookies de anúncios desativados neste navegador.';
     }
     botao.addEventListener('click', function () {
-      var recusar = ler() !== 'recusado';
+      var recusar = ler() === 'aceito';
       if (window.cookiesVab) window.cookiesVab.escolher(recusar ? 'recusado' : 'aceito');
       pintar();
     });
