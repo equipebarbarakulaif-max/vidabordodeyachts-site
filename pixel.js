@@ -52,7 +52,8 @@
       '#aviso-cookies .acoes{display:flex;gap:8px}' +
       '#aviso-cookies button{cursor:pointer;border-radius:30px;padding:8px 16px;font:700 13px Montserrat,Arial,sans-serif;' +
       'border:1.5px solid #E9EAEE;background:transparent;color:#E9EAEE}' +
-      '#aviso-cookies button.ok{background:#E9EAEE;color:#002445}' +
+      // "Recusar" e "Aceitar" com o mesmo destaque (LGPD: a escolha não pode ser induzida).
+      '#aviso-cookies button:hover{background:#E9EAEE;color:#002445}' +
       '#aviso-cookies button:focus-visible{outline:3px solid #BAA28C;outline-offset:2px}';
     document.head.appendChild(css);
     var aviso = document.createElement('div');
