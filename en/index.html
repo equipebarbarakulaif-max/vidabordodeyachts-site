@@ -71,6 +71,13 @@
   .btn-wpp { background: var(--wpp); color: #fff; box-shadow: 0 8px 22px rgba(31,157,85,.28); }
   .btn-wpp:hover { background: #1a8a4a; }
   .btn-linha { border: 1.5px solid currentColor; color: var(--branco); }
+  .btn-inscricao { background: var(--areia); color: var(--navy); box-shadow: 0 8px 22px rgba(186,162,140,.35); }
+  .btn-inscricao:hover { background: #a98f77; }
+  .link-wpp { display: inline-flex; align-items: center; gap: 8px; font-size: 15px; font-weight: 600; color: var(--branco); text-decoration: none; border-bottom: 1px solid rgba(255,255,255,.45); padding-bottom: 2px; }
+  .link-wpp:hover { border-bottom-color: var(--areia); }
+  .link-wpp:focus-visible { outline: 3px solid var(--areia); outline-offset: 4px; }
+  .link-wpp svg { width: 18px; height: 18px; color: #4cd187; flex: none; }
+  .hero .acoes { align-items: center; }
   .btn svg { width: 20px; height: 20px; flex: none; }
 
   /* Topo */
@@ -104,7 +111,8 @@
   .hero .wrap { width: 100%; padding-top: 120px; padding-bottom: 90px; }
   .hero-texto { max-width: 590px; }
   .hero .sobrelinha { color: var(--areia); }
-  .hero h1 { color: var(--branco); font-size: clamp(36px, 5.6vw, 60px); font-weight: 700; letter-spacing: -.8px; }
+  .hero h1 { color: var(--branco); font-size: clamp(36px, 5.6vw, 60px); font-weight: 300; letter-spacing: -.8px; }
+  .hero h1 b { font-weight: 600; }
   .hero h1 em { font-style: normal; color: var(--areia); }
   .hero p.sub { margin-top: 22px; font-size: 18px; color: #d9e0e8; max-width: 520px; }
   .hero .acoes { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 34px; }
@@ -426,10 +434,10 @@
     <div class="wrap">
       <div class="hero-texto">
         <span class="sobrelinha">Mentorship with Bárbara Kulaif</span>
-        <h1>Work on Luxury Yachts, <em>even with zero experience</em>.</h1>
+        <h1>Work on <b>Luxury Yachts</b>, even with zero experience.</h1>
         <p class="sub">From day one to your first job on board: clear information, a real strategy and a community of people who are on this path or have already been there.</p>
         <div class="acoes">
-          <a class="btn btn-wpp js-wpp" href="#"><svg><use href="#i-wpp"/></svg>Join the mentorship</a>
+          <a class="btn btn-inscricao js-wpp" href="#">Join the mentorship</a>
           <a class="btn btn-linha" href="#formatos">How it works</a>
         </div>
         <div class="selo">
